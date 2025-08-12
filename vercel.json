@@ -6,22 +6,10 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/forms/(.*)",
-      "dest": "/forms/$1"
-    },
-    {
-      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|pdf|woff|woff2|ttf|eot))",
-      "dest": "/$1"
-    },
-    {
-      "src": "/",
-      "dest": "/index.html"
+      "source": "/((?!assets|forms|.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|pdf|woff|woff2|ttf|eot)).*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
