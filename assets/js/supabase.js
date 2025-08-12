@@ -1,7 +1,7 @@
 // Supabase Configuration
-// Replace 'your-project-ref' with your actual Supabase project reference
-const SUPABASE_URL = 'https://your-project-ref.supabase.co';
-const SUPABASE_ANON_KEY = 'sbp_1641563c55288a1dad3b1687f17d279c0379554e';
+// Project: portafolio-jhonlaurens
+const SUPABASE_URL = 'https://edtcguoujjysnbasoxsk.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkdGNndW91amp5c25iYXNveHNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUwMTY4NjIsImV4cCI6MjA3MDU5Mjg2Mn0.-IsoiGzO-QCPE01pSyclZEF4ZuWggQbwhSHs5JtGlOo';
 
 // Initialize Supabase client
 class SupabaseClient {
