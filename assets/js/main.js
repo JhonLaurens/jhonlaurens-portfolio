@@ -226,4 +226,56 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  /**
+   * Contact Form Handler with Supabase
+   */
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      const loadingElement = this.querySelector('.loading');
+      const errorElement = this.querySelector('.error-message');
+      const successElement = this.querySelector('.sent-message');
+      const submitButton = this.querySelector('button[type="submit"]');
+      
+      // Reset messages
+      loadingElement.style.display = 'block';
+      errorElement.style.display = 'none';
+      successElement.style.display = 'none';
+      submitButton.disabled = true;
+      
+      try {
+        // Prepare contact data
+        const contactData = {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          subject: formData.get('subject'),
+          message: formData.get('message'),
+          created_at: new Date().toISOString()
+        };
+        
+        // Save to Supabase using DatabaseManager
+        const result = await window.DatabaseManager.saveContactData(contactData);
+        
+        if (result.success) {
+          loadingElement.style.display = 'none';
+          successElement.style.display = 'block';
+          contactForm.reset();
+        } else {
+          throw new Error(result.error || 'Error al enviar el mensaje');
+        }
+        
+      } catch (error) {
+        console.error('Error sending contact form:', error);
+        loadingElement.style.display = 'none';
+        errorElement.textContent = 'Error al enviar el mensaje. Por favor, intenta de nuevo.';
+        errorElement.style.display = 'block';
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  }
+
 })();
