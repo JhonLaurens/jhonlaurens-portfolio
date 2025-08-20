@@ -1,0 +1,48 @@
+name: Deploy Portfolio
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: |
+          docker build -f deployment/docker/Dockerfile -t portfolio:latest .
+
+      - name: Test Container
+        run: |
+          docker run -d -p 8080:80 --name test-portfolio portfolio:latest
+          sleep 10
+          curl -f http://localhost:8080 || exit 1
+          docker stop test-portfolio
+          docker rm test-portfolio
+
+      - name: Build Production Image
+        run: |
+          docker build -f deployment/docker/Dockerfile.prod -t jhonlaurens/portfolio:latest .
+
+      - name: Security Scan
+        run: |
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+            -v $PWD:/tmp/app \
+            aquasec/trivy image jhonlaurens/portfolio:latest
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy to production
+        run: |
+          echo "Deployment would happen here"
+          # Add your deployment logic

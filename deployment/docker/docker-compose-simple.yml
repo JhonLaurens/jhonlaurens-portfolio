@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  # Portfolio Frontend
+  portfolio:
+    build: .
+    container_name: jhon-portfolio
+    ports:
+      - "8892:80"
+    restart: unless-stopped
+
+  # Base de Datos PostgreSQL simplificada
+  postgres:
+    image: postgres:15-alpine
+    container_name: portfolio-db
+    environment:
+      POSTGRES_DB: portfolio
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # Adminer para gestión de BD
+  adminer:
+    image: adminer:latest
+    container_name: portfolio-adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

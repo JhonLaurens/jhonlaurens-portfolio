@@ -1,0 +1,45 @@
+# Dockerfile optimizado para producción
+# Portfolio de Jhon Laurens - Data Engineer
+
+FROM nginx:alpine
+
+# Metadatos del contenedor
+LABEL maintainer="Jhon Laurens <jhon.laurens@example.com>" \
+      description="Portfolio profesional Data Engineer - Coltefinanciera" \
+      version="1.0.0" \
+      tech.stack="HTML5, Bootstrap5, JavaScript, Nginx" \
+      environment="production"
+
+# Instalar curl para health checks
+RUN apk add --no-cache curl
+
+# Copiar archivos del portfolio
+COPY index.html /usr/share/nginx/html/
+COPY assets/ /usr/share/nginx/html/assets/
+COPY forms/ /usr/share/nginx/html/forms/
+COPY *.html /usr/share/nginx/html/
+
+# Configuración optimizada de Nginx
+COPY deployment/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+# Configurar permisos de seguridad
+RUN chmod -R 644 /usr/share/nginx/html/ && \
+    chmod 755 /usr/share/nginx/html/ && \
+    find /usr/share/nginx/html/ -type d -exec chmod 755 {} \;
+
+# Crear usuario no-root para mayor seguridad
+RUN addgroup -g 1001 -S appgroup && \
+    adduser -u 1001 -S appuser -G appgroup
+
+# Configurar Nginx para correr como usuario no-root
+RUN sed -i 's/user  nginx;/user  appuser;/' /etc/nginx/nginx.conf
+
+# Puerto expuesto
+EXPOSE 80
+
+# Health check para verificar estado del contenedor
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost/ || exit 1
+
+# Comando para iniciar Nginx
+CMD ["nginx", "-g", "daemon off;"]

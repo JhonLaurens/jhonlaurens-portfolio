@@ -1,0 +1,100 @@
+version: "3.8"
+
+services:
+  # Portfolio Frontend
+  portfolio:
+    build: .
+    container_name: jhon-portfolio
+    ports:
+      - "8892:80"
+    volumes:
+      - ./logs:/var/log/nginx
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+
+  # Base de Datos PostgreSQL para Analytics
+  postgres:
+    image: postgres:15-alpine
+    container_name: portfolio-analytics-db
+    environment:
+      POSTGRES_DB: portfolio_analytics
+      POSTGRES_USER: analyst
+      POSTGRES_PASSWORD: secure_password_2024
+      POSTGRES_HOST_AUTH_METHOD: md5
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+
+  # Redis para Cache y Sesiones
+  redis:
+    image: redis:7-alpine
+    container_name: portfolio-cache
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+
+  # Adminer para Gestión DB
+  adminer:
+    image: adminer:latest
+    container_name: portfolio-db-admin
+    ports:
+      - "8080:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+
+  # Monitoring con Grafana
+  grafana:
+    image: grafana/grafana:latest
+    container_name: portfolio-monitoring
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin2024
+    volumes:
+      - grafana_data:/var/lib/grafana
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+
+  # API Backend para Analytics (Node.js)
+  analytics-api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.api
+    container_name: portfolio-analytics-api
+    ports:
+      - "3001:3000"
+    environment:
+      DATABASE_URL: postgresql://analyst:secure_password_2024@postgres:5432/portfolio_analytics
+      REDIS_URL: redis://redis:6379
+      NODE_ENV: production
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+
+volumes:
+  postgres_data:
+  redis_data:
+  grafana_data:
+
+networks:
+  portfolio-network:
+    driver: bridge

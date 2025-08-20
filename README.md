@@ -1,23 +1,77 @@
-# Jhon Laurens - Portfolio
+# 🚀 Portfolio Profesional - Jhon Laurens
 
-Portfolio personal de Jhon Laurens, Desarrollador de Software y Especialista en Seguridad de la Información.
+[![Deploy Status](https://github.com/JhonLaurens/jhonlaurens-portfolio/workflows/Deploy%20Portfolio/badge.svg)](https://github.com/JhonLaurens/jhonlaurens-portfolio/actions)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://docker.com)
+[![Nginx](https://img.shields.io/badge/Nginx-Powered-green.svg)](https://nginx.org)
 
-## 🌟 Características
+> **Data Engineer & Database Analyst especializado en Core Banking**  
+> Coltefinanciera | AI Specialist | CCNA & Python Certified
 
-- **Diseño Responsivo**: Optimizado para todos los dispositivos
-- **Bilingüe**: Soporte completo para Español e Inglés
-- **Moderno**: Diseño limpio y profesional
-- **Rápido**: Optimizado para rendimiento
-- **SEO Friendly**: Optimizado para motores de búsqueda
+## 📋 Tabla de Contenidos
 
-## 🚀 Despliegue en Vercel
+- [🎯 Descripción](#-descripción)
+- [🛠️ Tecnologías](#️-tecnologías)
+- [🚀 Instalación](#-instalación)
+- [🐳 Docker](#-docker)
+- [📊 Características](#-características)
+- [🔧 Desarrollo](#-desarrollo)
+- [📁 Estructura del Proyecto](#-estructura-del-proyecto)
+- [🤝 Contribuir](#-contribuir)
 
-### Opción 1: Despliegue Directo desde GitHub
+## � DescripciónPortfolio Data Engineer - Core Banking & AI
 
-1. Ve a [Vercel](https://vercel.com)
-2. Inicia sesión con tu cuenta de GitHub
-3. Haz clic en "New Project"
-4. Importa este repositorio: `https://github.com/JhonLaurens/jhonlaurens-portfolio.git`
+> **Portfolio profesional de Jhon Laurens, Data Engineer especializado en Core Bancario, IA y Ciberseguridad en Coltefinanciera S.A.**
+
+## � **Descripción**
+
+Portfolio ultra-profesional diseñado para mostrar expertise en:
+
+- 🏛️ **Core Banking**: Migración de 1.2M+ transacciones
+- 🤖 **Inteligencia Artificial**: 5+ proyectos implementados
+- 🔒 **Ciberseguridad**: ISO 27001 y SARLAFT
+- 📊 **Data Engineering**: PostgreSQL, Python, Apache Airflow
+
+## 🐳 **Arquitectura Docker**
+
+### **Servicios Incluidos:**
+
+- **Portfolio Frontend** (Nginx) - Puerto 8892
+- **Analytics API** (Node.js) - Puerto 3001
+- **PostgreSQL Database** - Puerto 5433
+- **Redis Cache** - Puerto 6380
+- **Adminer DB Admin** - Puerto 8080
+- **Grafana Monitoring** - Puerto 3000
+
+## 🚀 **Quick Start**
+
+### **Opción 1: Deployment Completo**
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/jhonlaurens/portfolio-data-engineer.git
+cd portfolio-data-engineer
+
+# Ejecutar deployment (Windows)
+.\deploy.ps1
+
+# Ejecutar deployment (Linux/Mac)
+chmod +x deploy.sh
+./deploy.sh
+```
+
+### **Opción 2: Docker Compose Manual**
+
+```bash
+# Construir e iniciar servicios
+docker-compose up -d
+
+# Ver logs
+docker-compose logs -f
+
+# Detener servicios
+docker-compose down
+```
+
 5. Vercel detectará automáticamente la configuración
 6. Haz clic en "Deploy"
 
@@ -78,6 +132,7 @@ Edita el archivo `assets/js/translations.js` y agrega nuevas claves en los objet
 ## 📱 Responsive Design
 
 El portfolio está optimizado para:
+
 - 📱 Móviles (320px+)
 - 📱 Tablets (768px+)
 - 💻 Desktop (1024px+)
@@ -86,6 +141,7 @@ El portfolio está optimizado para:
 ## 🎨 Personalización
 
 ### Colores
+
 Los colores principales se pueden modificar en `assets/css/main.css` en las variables CSS:
 
 ```css
@@ -99,6 +155,7 @@ Los colores principales se pueden modificar en `assets/css/main.css` en las vari
 ```
 
 ### Contenido
+
 - Edita `index.html` para modificar el contenido
 - Actualiza las traducciones en `assets/js/translations.js`
 - Reemplaza las imágenes en `assets/img/`
@@ -136,6 +193,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 ## 👨‍💻 Autor
 
 **Jhon Laurens**
+
 - GitHub: [@jhonlaurens](https://github.com/jhonlaurens)
 - LinkedIn: [jhonlaurens](https://linkedin.com/in/jhonlaurens)
 
