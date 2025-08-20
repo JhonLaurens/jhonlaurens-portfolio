@@ -20,9 +20,44 @@ jobs:
 
       - name: Test Container
         run: |
+          # Ejecutar contenedor
           docker run -d -p 8080:80 --name test-portfolio portfolio:latest
-          sleep 10
-          curl -f http://localhost:8080 || exit 1
+
+          # Verificar que el contenedor está corriendo
+          sleep 5
+          if ! docker ps | grep test-portfolio; then
+            echo "❌ Container failed to start"
+            docker logs test-portfolio
+            exit 1
+          fi
+
+          # Verificar nginx está corriendo dentro del contenedor
+          docker exec test-portfolio nginx -t
+          if [ $? -ne 0 ]; then
+            echo "❌ Nginx configuration test failed"
+            docker logs test-portfolio
+            exit 1
+          fi
+
+          # Test HTTP con reintentos
+          echo "🌐 Testing HTTP access..."
+          for i in {1..10}; do
+            if curl -s -f http://localhost:8080 > /dev/null; then
+              echo "✅ HTTP test successful on attempt $i"
+              break
+            else
+              echo "⏱️ HTTP test attempt $i failed, retrying in 3s..."
+              sleep 3
+              if [ $i -eq 10 ]; then
+                echo "❌ HTTP test failed after 10 attempts"
+                docker logs test-portfolio
+                docker ps | grep test-portfolio
+                exit 1
+              fi
+            fi
+          done
+
+          # Limpiar
           docker stop test-portfolio
           docker rm test-portfolio
 
