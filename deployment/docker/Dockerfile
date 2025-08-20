@@ -10,7 +10,7 @@ LABEL version="2.0"
 COPY . /usr/share/nginx/html/
 
 # Copiar configuración personalizada de nginx
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY deployment/nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Exponer puerto 80
 EXPOSE 80
