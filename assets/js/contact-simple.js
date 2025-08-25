@@ -57,13 +57,25 @@
 
       try {
         const formData = new FormData(form);
+        // Validar y sanitizar datos
+        const rawData = {
+          name: formData.get("name")?.trim(),
+          email: formData.get("email")?.trim(),
+          subject: formData.get("subject")?.trim() || "Contacto desde Portfolio",
+          message: formData.get("message")?.trim(),
+        };
+
+        // Validaciones
+        const validationErrors = validateContactData(rawData);
+        if (validationErrors.length > 0) {
+          throw new Error(validationErrors.join(", "));
+        }
+
         const contactData = {
-          name: formData.get("name"),
-          email: formData.get("email"),
-          subject: formData.get("subject") || "Contacto desde Portfolio",
-          message: formData.get("message"),
+          ...rawData,
           created_at: new Date().toISOString(),
           source: "portfolio-website-v2",
+          ip_hash: await getClientHash(), // Hash anónimo para analytics
         };
 
         console.log("Sending contact data:", contactData);
@@ -139,6 +151,56 @@
     console.log("Simple contact form handler initialized");
   }
 
+  // Validación de datos de contacto
+  function validateContactData(data) {
+    const errors = [];
+    
+    // Validar nombre
+    if (!data.name || data.name.length < 2) {
+      errors.push("El nombre debe tener al menos 2 caracteres");
+    }
+    if (data.name && data.name.length > 100) {
+      errors.push("El nombre no puede exceder 100 caracteres");
+    }
+    
+    // Validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!data.email || !emailRegex.test(data.email)) {
+      errors.push("Por favor ingresa un email válido");
+    }
+    
+    // Validar mensaje
+    if (!data.message || data.message.length < 10) {
+      errors.push("El mensaje debe tener al menos 10 caracteres");
+    }
+    if (data.message && data.message.length > 2000) {
+      errors.push("El mensaje no puede exceder 2000 caracteres");
+    }
+    
+    // Detectar spam básico
+    const spamKeywords = ['viagra', 'casino', 'lottery', 'winner', 'congratulations'];
+    const messageText = (data.message + ' ' + data.subject).toLowerCase();
+    if (spamKeywords.some(keyword => messageText.includes(keyword))) {
+      errors.push("Mensaje detectado como spam");
+    }
+    
+    return errors;
+  }
+
+  // Generar hash anónimo del cliente
+  async function getClientHash() {
+    try {
+      const data = navigator.userAgent + navigator.language + screen.width + screen.height;
+      const encoder = new TextEncoder();
+      const dataBuffer = encoder.encode(data);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 16);
+    } catch (e) {
+      return 'anonymous';
+    }
+  }
+
   // Fallback directo
   async function saveContactDirectly(data) {
     console.log("Using direct save fallback");
@@ -148,6 +210,12 @@
       const contacts = JSON.parse(
         localStorage.getItem("portfolio_contacts") || "[]"
       );
+      
+      // Limitar a 50 contactos en localStorage
+      if (contacts.length >= 50) {
+        contacts.shift(); // Remover el más antiguo
+      }
+      
       contacts.push({ ...data, backup: true, timestamp: Date.now() });
       localStorage.setItem("portfolio_contacts", JSON.stringify(contacts));
       console.log("Saved to localStorage successfully");

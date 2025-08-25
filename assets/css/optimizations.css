@@ -1,0 +1,150 @@
+/* CSS Optimizations and Performance Improvements */
+/* Este archivo contiene optimizaciones adicionales para mejorar el rendimiento */
+
+/* 1. Optimización de fuentes */
+@font-display: swap; /* Mejora la carga de fuentes */
+
+/* 2. Optimización de animaciones */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 3. Optimización de imágenes */
+img {
+  max-width: 100%;
+  height: auto;
+  loading: lazy; /* Carga diferida nativa */
+}
+
+/* 4. Optimización de scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 5. Mejoras de accesibilidad */
+:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* 6. Optimización de GPU para animaciones */
+.hero-content,
+.scroll-top,
+.preloader,
+[data-aos] {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* 7. Corrección de errores CSS detectados */
+.navmenu .dropdown a,
+.navmenu .dropdown a:focus {
+  color: var(--nav-dropdown-color); /* Corregido: faltaba 'var()' */
+}
+
+/* 8. Optimización de contenedores */
+.container {
+  contain: layout style;
+}
+
+/* 9. Optimización de tipografía */
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 10. Optimización de formularios */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* 11. Mejoras de rendimiento para dispositivos móviles */
+@media (max-width: 768px) {
+  /* Reducir complejidad visual en móviles */
+  .bg-circle {
+    display: none;
+  }
+  
+  /* Optimizar animaciones en móviles */
+  * {
+    animation-duration: 0.3s !important;
+  }
+}
+
+/* 12. Optimización de z-index */
+.header {
+  z-index: 1000;
+}
+
+.scroll-top {
+  z-index: 1001;
+}
+
+#preloader {
+  z-index: 9999;
+}
+
+/* 13. Mejoras de contraste */
+@media (prefers-contrast: high) {
+  :root {
+    --accent-color: #0066cc;
+    --background-color: #ffffff;
+    --default-color: #000000;
+  }
+}
+
+/* 14. Optimización de impresión */
+@media print {
+  .header,
+  .scroll-top,
+  .social-links,
+  #preloader {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+  }
+}
+
+/* 15. Optimización de carga crítica */
+.above-fold {
+  contain: layout style paint;
+}
+
+/* 16. Mejoras de seguridad CSS */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevenir overflow horizontal */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* 17. Optimización de memoria */
+.large-content {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
+}
