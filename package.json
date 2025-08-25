@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "python -m http.server 8000",
     "start": "python -m http.server 8000",
-    "build": "echo 'Building static site...' && echo 'Build complete!'",
+    "build": "if exist public rmdir /s /q public && mkdir public && copy *.html public\\ && xcopy assets public\\assets /E /I /Q && xcopy forms public\\forms /E /I /Q && echo Build complete!",
     "lint": "echo 'Linting HTML, CSS, and JS files...' && echo 'Lint complete!'",
     "test": "echo 'Running tests...' && echo 'Tests passed!'",
     "deploy": "echo 'Deploying to production...' && echo 'Deployment complete!'"
