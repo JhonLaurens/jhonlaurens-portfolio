@@ -1,0 +1,434 @@
+/**
+ * SEO OPTIMIZATION STYLES
+ * Enhanced styles for better search engine optimization and performance
+ */
+
+/* Schema Markup Styling */
+.schema-markup {
+  display: none;
+  visibility: hidden;
+}
+
+/* Structured Data Elements */
+.person-schema,
+.organization-schema,
+.website-schema {
+  display: none;
+}
+
+/* SEO-Friendly Content Structure */
+.seo-content {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--default-color);
+}
+
+/* Heading Hierarchy for SEO */
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--heading-color);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 600;
+  margin-bottom: 0.875rem;
+  color: var(--heading-color);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--heading-color);
+}
+
+h4 {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  font-weight: 500;
+  margin-bottom: 0.625rem;
+  color: var(--heading-color);
+}
+
+h5 {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--heading-color);
+}
+
+h6 {
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--heading-color);
+}
+
+/* SEO-Optimized Images */
+.seo-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.seo-image:hover {
+  transform: scale(1.02);
+}
+
+/* Breadcrumb Navigation for SEO */
+.breadcrumb-seo {
+  background: transparent;
+  padding: 0;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+}
+
+.breadcrumb-seo .breadcrumb-item {
+  color: var(--nav-color);
+}
+
+.breadcrumb-seo .breadcrumb-item + .breadcrumb-item::before {
+  content: '→';
+  color: var(--accent-color);
+  margin: 0 0.5rem;
+}
+
+.breadcrumb-seo .breadcrumb-item.active {
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+/* Rich Snippets Styling */
+.rich-snippet {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(0, 150, 255, 0.05));
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.rich-snippet::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), #00d4ff);
+  border-radius: 12px 12px 0 0;
+}
+
+/* FAQ Schema Styling */
+.faq-schema {
+  margin: 2rem 0;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.1);
+}
+
+.faq-question {
+  padding: 1rem 1.5rem;
+  background: rgba(0, 255, 255, 0.05);
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--heading-color);
+  border: none;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question:hover {
+  background: rgba(0, 255, 255, 0.1);
+}
+
+.faq-answer {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--default-color);
+  line-height: 1.6;
+  display: none;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+  animation: fadeInDown 0.3s ease;
+}
+
+.faq-icon {
+  transition: transform 0.3s ease;
+  color: var(--accent-color);
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+/* Article Schema Styling */
+.article-schema {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--nav-color);
+  font-size: 0.875rem;
+}
+
+.meta-item i {
+  color: var(--accent-color);
+}
+
+/* Performance Optimization Classes */
+.critical-resource {
+  font-display: swap;
+}
+
+.lazy-load {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lazy-load.loaded {
+  opacity: 1;
+}
+
+/* Core Web Vitals Optimization */
+.layout-stable {
+  contain: layout style;
+}
+
+.paint-optimized {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Accessibility for SEO */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip Links for SEO */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Local Business Schema Styling */
+.business-info {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(0, 150, 255, 0.05));
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.business-hours {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.hours-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+/* Social Media Schema */
+.social-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.social-item:hover {
+  border-color: var(--accent-color);
+  background: rgba(0, 255, 255, 0.1);
+}
+
+/* Review Schema Styling */
+.review-schema {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-left: 4px solid var(--accent-color);
+}
+
+.review-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stars {
+  color: #ffd700;
+  font-size: 1.2rem;
+}
+
+.rating-value {
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.review-author {
+  font-style: italic;
+  color: var(--nav-color);
+  margin-top: 1rem;
+}
+
+/* Mobile SEO Optimizations */
+@media (max-width: 768px) {
+  .seo-content {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .rich-snippet {
+    padding: 1rem;
+    margin: 0.5rem 0;
+  }
+  
+  .article-schema {
+    padding: 1rem;
+  }
+  
+  .business-hours {
+    grid-template-columns: 1fr;
+  }
+  
+  .social-proof {
+    flex-direction: column;
+  }
+}
+
+/* Print Styles for SEO */
+@media print {
+  .schema-markup,
+  .seo-hidden {
+    display: none !important;
+  }
+  
+  .seo-content {
+    color: #000;
+    background: #fff;
+  }
+  
+  .rich-snippet {
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+  }
+}
+
+/* High Contrast Mode for Accessibility */
+@media (prefers-contrast: high) {
+  .rich-snippet {
+    border-color: #fff;
+    background: #000;
+  }
+  
+  .faq-item {
+    border-color: #fff;
+  }
+  
+  .business-info {
+    border-color: #fff;
+    background: #000;
+  }
+}
+
+/* Reduced Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .seo-image,
+  .faq-icon,
+  .lazy-load {
+    transition: none;
+  }
+  
+  .faq-item.active .faq-answer {
+    animation: none;
+  }
+}
+
+/* Animation for FAQ */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
