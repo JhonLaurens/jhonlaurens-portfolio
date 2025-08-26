@@ -104,3 +104,4 @@ Dockerfile.dev
 # Contact form submissions (if stored locally)
 contact-submissions/
 *.contact
+.vercel
