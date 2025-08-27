@@ -65,33 +65,20 @@ class ParticleSystem {
     }
 }
 
-// Cyberpunk Text Effects
+// Cyberpunk Text Effects (Improved for readability)
 class CyberpunkText {
     static glitchEffect(element) {
+        // Disabled glitch effect to improve readability
+        // Original text is preserved without character changes
         const text = element.textContent;
-        const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
         
-        let iterations = 0;
-        const maxIterations = 10;
+        // Simple fade effect instead of character glitch
+        element.style.transition = 'opacity 0.3s ease';
+        element.style.opacity = '0.7';
         
-        const interval = setInterval(() => {
-            element.textContent = text
-                .split('')
-                .map((char, index) => {
-                    if (index < iterations) {
-                        return text[index];
-                    }
-                    return glitchChars[Math.floor(Math.random() * glitchChars.length)];
-                })
-                .join('');
-            
-            iterations += 1;
-            
-            if (iterations > maxIterations) {
-                clearInterval(interval);
-                element.textContent = text;
-            }
-        }, 50);
+        setTimeout(() => {
+            element.style.opacity = '1';
+        }, 150);
     }
 
     static typeWriter(element, text, speed = 100) {
@@ -362,23 +349,23 @@ class ScrollEffects {
     applyScrollTransforms(element, data) {
         const { visibilityRatio, centerProximity, scrollDirection, scrollSpeed, isScrolling, index } = data;
         
-        // Enhanced transform calculations
-        const translateY = (1 - visibilityRatio) * 50 * (scrollDirection === 'down' ? 1 : -1);
-        const scale = 0.8 + (visibilityRatio * 0.2);
-        const opacity = Math.max(0.1, visibilityRatio);
-        const rotateX = (1 - visibilityRatio) * 15 * (scrollDirection === 'down' ? 1 : -1);
+        // Optimized transform calculations for better readability
+        const translateY = (1 - visibilityRatio) * 20 * (scrollDirection === 'down' ? 1 : -1);
+        const scale = 0.95 + (visibilityRatio * 0.05);
+        const opacity = Math.max(0.3, visibilityRatio);
+        const rotateX = (1 - visibilityRatio) * 5 * (scrollDirection === 'down' ? 1 : -1);
         
-        // Glow intensity based on center proximity and scroll speed
-        const glowIntensity = centerProximity * Math.min(1, scrollSpeed / 10);
+        // Optimized glow intensity for better readability
+        const glowIntensity = centerProximity * Math.min(0.5, scrollSpeed / 20);
         const glowColor = scrollDirection === 'down' ? '0, 245, 255' : '191, 0, 255';
         
-        // Staggered animation delay
-        const delay = index * 0.05;
+        // Reduced animation delay for smoother experience
+        const delay = index * 0.02;
         
-        // Apply transforms with enhanced transitions
+        // Apply transforms with smoother transitions
         element.style.transition = isScrolling 
-            ? `all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s`
-            : 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            ? `all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s`
+            : 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         
         element.style.transform = `
             translateY(${translateY}px) 
@@ -389,23 +376,20 @@ class ScrollEffects {
         
         element.style.opacity = opacity;
         
-        // Enhanced glow effects
-        if (glowIntensity > 0.1) {
+        // Subtle glow effects that don't interfere with readability
+        if (glowIntensity > 0.05) {
             element.style.boxShadow = `
-                0 0 ${20 + glowIntensity * 30}px rgba(${glowColor}, ${glowIntensity * 0.6}),
-                0 0 ${40 + glowIntensity * 60}px rgba(${glowColor}, ${glowIntensity * 0.3}),
-                inset 0 0 ${10 + glowIntensity * 20}px rgba(${glowColor}, ${glowIntensity * 0.1})
+                0 0 ${10 + glowIntensity * 15}px rgba(${glowColor}, ${glowIntensity * 0.3}),
+                0 0 ${20 + glowIntensity * 30}px rgba(${glowColor}, ${glowIntensity * 0.15})
             `;
-            element.style.borderColor = `rgba(${glowColor}, ${glowIntensity})`;
         } else {
             element.style.boxShadow = '';
-            element.style.borderColor = '';
         }
         
-        // Text glow for headings
+        // Subtle text glow for headings that preserves readability
         if (element.tagName.match(/^H[1-6]$/)) {
-            element.style.textShadow = glowIntensity > 0.1 
-                ? `0 0 ${10 + glowIntensity * 20}px rgba(${glowColor}, ${glowIntensity})`
+            element.style.textShadow = glowIntensity > 0.05 
+                ? `0 0 ${5 + glowIntensity * 10}px rgba(${glowColor}, ${glowIntensity * 0.4})`
                 : '';
         }
     }
@@ -502,11 +486,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const buttons = document.querySelectorAll('.btn, .social-links a');
         NeonEffects.addHoverGlow(buttons);
         
-        // Add glitch effect to headings on hover
+        // Improved hover effects for headings (more subtle)
         const headings = document.querySelectorAll('h1, h2, h3');
         headings.forEach(heading => {
             heading.addEventListener('mouseenter', () => {
-                CyberpunkText.glitchEffect(heading);
+                heading.style.transition = 'all 0.3s ease';
+                heading.style.transform = 'translateY(-2px)';
+                heading.style.textShadow = '0 2px 8px rgba(0, 255, 255, 0.3)';
+            });
+            
+            heading.addEventListener('mouseleave', () => {
+                heading.style.transform = 'translateY(0)';
+                heading.style.textShadow = 'none';
             });
         });
         

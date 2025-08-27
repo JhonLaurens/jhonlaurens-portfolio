@@ -65,33 +65,20 @@ class ParticleSystem {
     }
 }
 
-// Cyberpunk Text Effects
+// Cyberpunk Text Effects (Improved for readability)
 class CyberpunkText {
     static glitchEffect(element) {
+        // Disabled glitch effect to improve readability
+        // Original text is preserved without character changes
         const text = element.textContent;
-        const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
         
-        let iterations = 0;
-        const maxIterations = 10;
+        // Simple fade effect instead of character glitch
+        element.style.transition = 'opacity 0.3s ease';
+        element.style.opacity = '0.7';
         
-        const interval = setInterval(() => {
-            element.textContent = text
-                .split('')
-                .map((char, index) => {
-                    if (index < iterations) {
-                        return text[index];
-                    }
-                    return glitchChars[Math.floor(Math.random() * glitchChars.length)];
-                })
-                .join('');
-            
-            iterations += 1;
-            
-            if (iterations > maxIterations) {
-                clearInterval(interval);
-                element.textContent = text;
-            }
-        }, 50);
+        setTimeout(() => {
+            element.style.opacity = '1';
+        }, 150);
     }
 
     static typeWriter(element, text, speed = 100) {
@@ -499,18 +486,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const buttons = document.querySelectorAll('.btn, .social-links a');
         NeonEffects.addHoverGlow(buttons);
         
-        // Add smooth hover effects to headings
+        // Improved hover effects for headings (more subtle)
         const headings = document.querySelectorAll('h1, h2, h3');
         headings.forEach(heading => {
             heading.addEventListener('mouseenter', () => {
                 heading.style.transition = 'all 0.3s ease';
-                heading.style.transform = 'scale(1.05)';
-                heading.style.textShadow = '0 0 20px currentColor, 0 0 40px currentColor';
+                heading.style.transform = 'translateY(-2px)';
+                heading.style.textShadow = '0 2px 8px rgba(0, 255, 255, 0.3)';
             });
             
             heading.addEventListener('mouseleave', () => {
-                heading.style.transform = 'scale(1)';
-                heading.style.textShadow = '';
+                heading.style.transform = 'translateY(0)';
+                heading.style.textShadow = 'none';
             });
         });
         

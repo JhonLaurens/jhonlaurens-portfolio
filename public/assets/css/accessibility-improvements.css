@@ -1,0 +1,348 @@
+/* ===================================
+   ACCESSIBILITY IMPROVEMENTS
+   Reducing visual noise and improving readability
+   Applied globally for better accessibility
+   =================================== */
+
+/* Reduced Glow Effects for Better Accessibility */
+:root {
+  /* Much softer glow effects */
+  --glow-blue-soft: 0 0 2px rgba(0, 245, 255, 0.4);
+  --glow-purple-soft: 0 0 2px rgba(191, 0, 255, 0.4);
+  --glow-green-soft: 0 0 2px rgba(57, 255, 20, 0.4);
+  --glow-pink-soft: 0 0 2px rgba(255, 0, 128, 0.4);
+  
+  /* Improved contrast colors */
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #b0b0b0;
+  
+  /* Accessible color alternatives */
+  --accessible-blue: #4da6ff;
+  --accessible-purple: #9966ff;
+  --accessible-green: #66ff66;
+  --accessible-pink: #ff66b3;
+}
+
+/* Reduce excessive glow effects on headings - Applied globally */
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: var(--glow-blue-soft) !important;
+  transition: all 0.2s ease !important;
+  animation: none !important; /* Remove all animations */
+}
+
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+  text-shadow: var(--glow-purple-soft) !important;
+  transform: none !important; /* Remove scaling effect */
+  color: var(--accessible-purple) !important;
+}
+
+/* Override title glow animation */
+h1 {
+  animation: none !important;
+  color: var(--accessible-blue) !important;
+}
+
+/* Reduce title animation intensity */
+@keyframes titleGlow {
+  0% {
+    text-shadow: var(--glow-blue-soft);
+    color: var(--neon-blue);
+  }
+  100% {
+    text-shadow: var(--glow-purple-soft);
+    color: var(--neon-purple);
+  }
+}
+
+/* Much softer neon text effects */
+.neon-text {
+  text-shadow: none !important; /* Remove all glow */
+  animation: none !important; /* Remove pulsing animation */
+  color: var(--accessible-blue) !important;
+}
+
+.neon-text:hover {
+  text-shadow: none !important;
+  color: var(--accessible-green) !important;
+}
+
+.neon-text.purple {
+  text-shadow: none !important;
+  color: var(--accessible-purple) !important;
+}
+
+.neon-text.green {
+  text-shadow: none !important;
+  color: var(--accessible-green) !important;
+}
+
+.neon-text.pink {
+  text-shadow: none !important;
+  color: var(--accessible-pink) !important;
+}
+
+/* Reduce button glow effects - Applied globally */
+.btn, .button, button {
+  box-shadow: 0 2px 8px rgba(0, 255, 255, 0.15) !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn:hover, .button:hover, button:hover {
+  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.25) !important;
+  transform: translateY(-1px) !important; /* Subtle lift instead of scale */
+}
+
+.btn-futuristic {
+  box-shadow: 0 0 8px rgba(0, 245, 255, 0.15) !important;
+}
+
+.btn-futuristic:hover {
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.3) !important;
+  transform: translateY(-1px) !important; /* Reduce movement */
+}
+
+/* Softer border glow effects */
+.glow-border {
+  box-shadow: 
+    0 0 5px rgba(0, 245, 255, 0.3),
+    inset 0 0 5px rgba(0, 245, 255, 0.05) !important;
+}
+
+.glow-border:hover::before {
+  opacity: 0.3 !important; /* Reduce border animation intensity */
+}
+
+/* Reduce card glow effects */
+.cyber-card {
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 10px rgba(0, 245, 255, 0.05) !important;
+}
+
+.cyber-card:hover {
+  transform: translateY(-2px) !important; /* Reduce movement */
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    0 0 15px rgba(0, 245, 255, 0.15) !important;
+}
+
+/* Reduce background animation intensity */
+body::before {
+  opacity: 0.05 !important; /* Much more subtle background */
+}
+
+@keyframes backgroundPulse {
+  0% {
+    opacity: 0.03;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.07;
+    transform: scale(1.02); /* Reduce scaling */
+  }
+}
+
+/* Reduce particle effects */
+.particle {
+  box-shadow: 0 0 3px var(--neon-blue) !important; /* Smaller glow */
+  opacity: 0.6 !important;
+}
+
+.particle:nth-child(2n) {
+  box-shadow: 0 0 3px var(--neon-purple) !important;
+}
+
+.particle:nth-child(3n) {
+  box-shadow: 0 0 3px var(--neon-green) !important;
+}
+
+/* Reduce hero section glow */
+.hero::before {
+  opacity: 0.1 !important;
+}
+
+@keyframes heroGlow {
+  0% {
+    opacity: 0.05;
+  }
+  100% {
+    opacity: 0.15;
+  }
+}
+
+/* Improve text readability */
+p, .text-content {
+  color: var(--text-secondary) !important;
+  text-shadow: none !important;
+  line-height: 1.7 !important;
+}
+
+/* Reduce navigation glow */
+.navbar {
+  box-shadow: 0 2px 20px rgba(0, 255, 255, 0.1) !important;
+}
+
+.navbar-nav .nav-link:hover {
+  text-shadow: 0 0 3px var(--neon-purple) !important;
+  transform: none !important;
+}
+
+.navmenu a:hover,
+.navmenu a.active {
+  text-shadow: 0 0 5px var(--neon-purple) !important;
+}
+
+.navmenu a::after {
+  box-shadow: 0 0 5px var(--neon-purple) !important;
+}
+
+/* Reduce social links glow */
+.social-links a:hover {
+  box-shadow: var(--glow-blue-soft) !important;
+  transform: scale(1.05) !important; /* Reduce scaling */
+}
+
+/* Improve focus states for accessibility */
+.btn-futuristic:focus,
+.navmenu a:focus,
+.social-links a:focus {
+  outline: 2px solid var(--neon-blue) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(0, 245, 255, 0.2) !important;
+}
+
+/* High contrast mode improvements */
+@media (prefers-contrast: high) {
+  :root {
+    --neon-blue: #00ccff;
+    --neon-purple: #cc00ff;
+    --neon-green: #00ff00;
+    --neon-pink: #ff0099;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    text-shadow: none !important;
+    color: var(--text-primary) !important;
+  }
+  
+  .neon-text {
+    text-shadow: none !important;
+    color: var(--text-primary) !important;
+  }
+  
+  .btn-futuristic {
+    box-shadow: none !important;
+    border-width: 2px !important;
+  }
+  
+  .cyber-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+    border-width: 2px !important;
+  }
+  
+  .particles-container {
+    display: none !important;
+  }
+  
+  body::before {
+    display: none !important;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.1s !important;
+  }
+  
+  .particles-container {
+    display: none !important;
+  }
+  
+  body::before {
+    animation: none !important;
+  }
+  
+  .hero::before {
+    animation: none !important;
+  }
+  
+  .cyber-card::before {
+    animation: none !important;
+  }
+}
+
+/* Improved text contrast for better readability */
+.hero h1 {
+  color: var(--text-primary) !important;
+}
+
+.hero p {
+  color: var(--text-secondary) !important;
+  font-size: 1.1rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Better button contrast */
+.btn-futuristic {
+  background: rgba(0, 245, 255, 0.1) !important;
+  border: 2px solid var(--neon-blue) !important;
+  color: var(--text-primary) !important;
+}
+
+.btn-futuristic:hover {
+  background: rgba(0, 245, 255, 0.2) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Improve card text readability */
+.cyber-card h3,
+.cyber-card h4,
+.cyber-card h5 {
+  color: var(--text-primary) !important;
+}
+
+.cyber-card p,
+.cyber-card .text-content {
+  color: var(--text-secondary) !important;
+}
+
+/* Mobile accessibility improvements */
+@media (max-width: 768px) {
+  /* Reduce all glow effects on mobile */
+  h1, h2, h3, h4, h5, h6 {
+    text-shadow: 0 0 2px var(--neon-blue) !important;
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 2px var(--neon-blue) !important;
+  }
+  
+  .btn-futuristic {
+    box-shadow: 0 0 5px rgba(0, 245, 255, 0.1) !important;
+  }
+  
+  .cyber-card {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  /* Increase text size for better readability */
+  p {
+    font-size: 1.05rem !important;
+    line-height: 1.8 !important;
+  }
+  
+  /* Improve button touch targets */
+  .btn-futuristic {
+    min-height: 48px !important;
+    padding: 14px 28px !important;
+  }
+  
+  .social-links a {
+    min-width: 48px !important;
+    min-height: 48px !important;
+  }
+}
