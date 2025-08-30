@@ -1,15 +1,200 @@
 {
   "version": 2,
+  "name": "jhonlaurens-portfolio",
+  "alias": ["jhonlaurens.vercel.app"],
+  "scope": "jhonlaurens-projects",
+  
   "builds": [
     {
-      "src": "public/**",
+      "src": "public/**/*",
       "use": "@vercel/static"
+    },
+    {
+      "src": "backend/api/server.js",
+      "use": "@vercel/node",
+      "config": {
+        "maxLambdaSize": "50mb",
+        "memory": 1024,
+        "maxDuration": 30
+      }
     }
   ],
+  
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "/backend/api/server.js"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/public/assets/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|webp|ico|woff|woff2|ttf|eot))",
+      "dest": "/public/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/portfolio-details",
+      "dest": "/public/portfolio-details.html"
+    },
+    {
+      "src": "/service-details",
+      "dest": "/public/service-details.html"
+    },
+    {
+      "src": "/starter-page",
+      "dest": "/public/starter-page.html"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/public/$1"
+      "dest": "/public/index.html"
     }
-  ]
+  ],
+  
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/#portfolio",
+      "permanent": false
+    },
+    {
+      "source": "/contact",
+      "destination": "/#contact",
+      "permanent": false
+    },
+    {
+      "source": "/about",
+      "destination": "/#about",
+      "permanent": false
+    }
+  ],
+  
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/api/robots"
+    }
+  ],
+  
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    },
+    {
+      "source": "/public/(.*\\.(html|js|css))",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:;"
+        }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    }
+  ],
+  
+  "env": {
+    "NODE_ENV": "production",
+    "VERCEL_ENV": "@vercel-env",
+    "VERCEL_URL": "@vercel-url",
+    "VERCEL_REGION": "@vercel-region"
+  },
+  
+  "build": {
+    "env": {
+      "NODE_ENV": "production",
+      "GENERATE_SOURCEMAP": "false",
+      "INLINE_RUNTIME_CHUNK": "false"
+    }
+  },
+  
+  "functions": {
+    "backend/api/server.js": {
+      "memory": 1024,
+      "maxDuration": 30,
+      "runtime": "nodejs18.x",
+      "regions": ["iad1", "sfo1"]
+    }
+  },
+  
+  "regions": ["iad1", "sfo1", "lhr1"],
+  
+  "github": {
+    "enabled": true,
+    "autoAlias": true,
+    "autoJobCancelation": true
+  },
+  
+  "cleanUrls": true,
+  "trailingSlash": false,
+  
+  "crons": [
+    {
+      "path": "/api/health-check",
+      "schedule": "0 */6 * * *"
+    }
+  ],
+  
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "outputDirectory": "public",
+  
+  "framework": null,
+  "public": true,
+  
+  "git": {
+    "deploymentEnabled": {
+      "main": true,
+      "develop": false
+    }
+  }
 }
