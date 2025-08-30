@@ -19,6 +19,35 @@
   --nav-font: "Nunito", sans-serif;
 }
 
+/* Typography Scale */
+:root {
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-lg: 1.125rem;    /* 18px */
+  --font-size-xl: 1.25rem;     /* 20px */
+  --font-size-2xl: 1.5rem;     /* 24px */
+  --font-size-3xl: 1.875rem;   /* 30px */
+  --font-size-4xl: 2.25rem;    /* 36px */
+  --font-size-5xl: 3rem;       /* 48px */
+  --font-size-6xl: 3.75rem;    /* 60px */
+  --font-size-7xl: 4.5rem;     /* 72px */
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+}
+
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
   --background-color: #1f1f1f; /* Background color for the entire website, including individual sections */
@@ -26,7 +55,7 @@
   --heading-color: #ffffff; /* Color for headings, subheadings and title throughout the website */
   --accent-color: #ececec; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #232323; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #310606; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
@@ -71,12 +100,16 @@ body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
 }
 
 a {
   color: var(--accent-color);
   text-decoration: none;
   transition: 0.3s;
+  font-weight: var(--font-weight-medium);
 }
 
 a:hover {
@@ -92,7 +125,63 @@ h5,
 h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-bottom: 1rem;
 }
+
+h1 {
+  font-size: var(--font-size-5xl);
+}
+
+h2 {
+  font-size: var(--font-size-4xl);
+}
+
+h3 {
+  font-size: var(--font-size-3xl);
+}
+
+h4 {
+  font-size: var(--font-size-2xl);
+}
+
+h5 {
+  font-size: var(--font-size-xl);
+}
+
+h6 {
+  font-size: var(--font-size-lg);
+}
+
+p {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  margin-bottom: 1rem;
+}
+
+small {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+}
+
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-base { font-size: var(--font-size-base); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+.text-2xl { font-size: var(--font-size-2xl); }
+.text-3xl { font-size: var(--font-size-3xl); }
+.text-4xl { font-size: var(--font-size-4xl); }
+.text-5xl { font-size: var(--font-size-5xl); }
+
+.font-light { font-weight: var(--font-weight-light); }
+.font-normal { font-weight: var(--font-weight-normal); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+.font-extrabold { font-weight: var(--font-weight-extrabold); }
 
 /* PHP Email Form Messages
 ------------------------------*/
@@ -604,9 +693,9 @@ section,
 }
 
 .hero .hero-text h1 {
-  font-size: 72px;
-  font-weight: 800;
-  line-height: 1.1;
+  font-size: var(--font-size-7xl);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
   margin-bottom: 15px;
   color: var(--heading-color);
 }
@@ -631,31 +720,34 @@ section,
 }
 
 .hero .hero-text h2 {
-  font-size: 32px;
-  font-weight: 600;
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
   color: var(--heading-color);
   margin-bottom: 10px;
 }
 
 .hero .hero-text .lead {
-  font-size: 24px;
+  font-size: var(--font-size-2xl);
   margin-bottom: 20px;
   color: var(--default-color);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
 }
 
 .hero .hero-text .lead span {
   color: var(--accent-color);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   border-bottom: 2px solid var(--accent-color);
   padding-bottom: 2px;
 }
 
 .hero .hero-text .description {
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   margin-bottom: 40px;
   max-width: 500px;
+  font-weight: var(--font-weight-normal);
 }
 
 .hero .hero-actions {
@@ -667,12 +759,13 @@ section,
 
 .hero .hero-actions .btn {
   padding: 14px 30px;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.3s ease;
   border: 2px solid;
+  font-family: var(--default-font);
 }
 
 .hero .hero-actions .btn.btn-primary {
@@ -789,15 +882,15 @@ section,
   }
 
   .hero .hero-text h1 {
-    font-size: 56px;
+    font-size: var(--font-size-6xl);
   }
 
   .hero .hero-text h2 {
-    font-size: 28px;
+    font-size: var(--font-size-3xl);
   }
 
   .hero .hero-text .lead {
-    font-size: 20px;
+    font-size: var(--font-size-xl);
   }
 
   .hero .hero-visual .profile-container {
@@ -808,19 +901,19 @@ section,
 
 @media (max-width: 768px) {
   .hero .hero-text h1 {
-    font-size: 42px;
+    font-size: var(--font-size-5xl);
   }
 
   .hero .hero-text h2 {
-    font-size: 24px;
+    font-size: var(--font-size-2xl);
   }
 
   .hero .hero-text .lead {
-    font-size: 18px;
+    font-size: var(--font-size-lg);
   }
 
   .hero .hero-text .description {
-    font-size: 16px;
+    font-size: var(--font-size-base);
   }
 
   .hero .hero-actions {
@@ -829,7 +922,7 @@ section,
 
   .hero .hero-actions .btn {
     padding: 12px 25px;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
   }
 
   .hero .hero-visual .profile-container {
@@ -1243,24 +1336,24 @@ section,
 }
 
 .stats .stats-item .icon-wrapper i {
-  font-size: 36px;
+  font-size: var(--font-size-4xl);
 }
 
 .stats .stats-item span {
   display: block;
-  font-size: 48px;
-  font-weight: 700;
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
   color: var(--heading-color);
   margin-bottom: 10px;
-  line-height: 1;
+  line-height: var(--line-height-tight);
   font-family: var(--heading-font);
 }
 
 .stats .stats-item p {
   color: var(--default-color);
-  font-size: 18px;
+  font-size: var(--font-size-lg);
   margin: 0;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-family: var(--heading-font);
   opacity: 0.8;
 }
@@ -1282,10 +1375,11 @@ section,
 }
 
 .skills .skills-category h3 {
-  font-size: 24px;
+  font-size: var(--font-size-2xl);
   margin-bottom: 25px;
   position: relative;
   padding-bottom: 15px;
+  font-weight: var(--font-weight-bold);
 }
 
 .skills .skills-category h3:after {
@@ -1307,13 +1401,15 @@ section,
 }
 
 .skills .skill-item h4 {
-  font-size: 16px;
+  font-size: var(--font-size-base);
   margin-bottom: 8px;
+  font-weight: var(--font-weight-semibold);
 }
 
 .skills .skill-item .skill-percentage {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: color-mix(in srgb, var(--heading-color), transparent 30%);
+  font-weight: var(--font-weight-medium);
 }
 
 .skills .skill-item .progress {
@@ -1373,7 +1469,7 @@ section,
 }
 
 .skills .skill-box i {
-  font-size: 36px;
+  font-size: var(--font-size-4xl);
   color: color-mix(in srgb, var(--accent-color), transparent 20%);
   margin-bottom: 15px;
   display: inline-block;
@@ -1381,16 +1477,18 @@ section,
 }
 
 .skills .skill-box h4 {
-  font-size: 18px;
+  font-size: var(--font-size-lg);
   margin-bottom: 10px;
+  font-weight: var(--font-weight-semibold);
 }
 
 .skills .skill-box .skill-tooltip {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: color-mix(in srgb, var(--default-color), transparent 30%);
   opacity: 0;
   transform: translateY(5px);
   transition: all 0.3s;
+  font-weight: var(--font-weight-normal);
 }
 
 @media (max-width: 991.98px) {
@@ -1437,10 +1535,10 @@ section,
 }
 
 .resume .resume-side h3 {
-  font-size: 1.5rem;
+  font-size: var(--font-size-2xl);
   margin-bottom: 1rem;
   color: var(--heading-color);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 .resume .resume-side .contact-info li {
@@ -1599,15 +1697,16 @@ section,
 .portfolio .portfolio-filters li {
   cursor: pointer;
   padding: 12px 20px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
   color: var(--default-color);
   transition: all 0.3s ease-in-out;
   border-radius: 6px;
   background: transparent;
   position: relative;
   border-left: 3px solid transparent;
+  font-family: var(--default-font);
 }
 
 @media (max-width: 991px) {
@@ -1628,7 +1727,7 @@ section,
   color: var(--accent-color);
   background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
   border-left-color: var(--accent-color);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 .portfolio .portfolio-wrap {
@@ -1735,10 +1834,10 @@ section,
 }
 
 .services .service-header .service-intro .service-heading {
-  font-size: 48px;
+  font-size: var(--font-size-5xl);
   margin-bottom: 0;
-  font-weight: 700;
-  line-height: 1.2;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
   color: var(--heading-color);
 }
 
@@ -1754,13 +1853,13 @@ section,
 
 @media (max-width: 992px) {
   .services .service-header .service-intro .service-heading {
-    font-size: 36px;
+    font-size: var(--font-size-4xl);
   }
 }
 
 @media (max-width: 768px) {
   .services .service-header .service-intro .service-heading {
-    font-size: 30px;
+    font-size: var(--font-size-3xl);
     margin-bottom: 20px;
   }
 }
@@ -1777,7 +1876,9 @@ section,
   background-color: var(--accent-color);
   color: var(--contrast-color);
   border-radius: 4px;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  font-family: var(--default-font);
   transition: all 0.3s ease;
 }
 
@@ -1867,7 +1968,7 @@ section,
 }
 
 .services .service-card .card-action i {
-  font-size: 24px;
+  font-size: var(--font-size-xl);
   color: var(--contrast-color);
   transition: transform 0.3s ease;
 }
@@ -1929,7 +2030,7 @@ section,
   }
 
   .services .service-card h3 {
-    font-size: 24px;
+    font-size: var(--font-size-xl);
   }
 
   .services .service-card .service-icon {
@@ -2008,10 +2109,11 @@ section,
 }
 
 .testimonials .testimonial-content p {
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
   margin: 1.5rem 0;
   position: relative;
+  font-family: var(--default-font);
 }
 
 .testimonials .quote-pattern {
@@ -2029,7 +2131,7 @@ section,
 }
 
 .testimonials .quote-pattern i {
-  font-size: 1.25rem;
+  font-size: var(--font-size-xl);
   color: var(--accent-color);
 }
 
@@ -2135,15 +2237,16 @@ section,
 # Contact Section
 --------------------------------------------------------------*/
 .contact .info-box {
-  background-color: var(--accent-color);
-  color: var(--contrast-color);
+  background-color: var(--surface-color);
+  color: var(--default-color);
   padding: 3rem;
   border-radius: 1rem;
   height: 100%;
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 80%);
 }
 
 .contact .info-box h3 {
-  color: var(--contrast-color);
+  color: var(--heading-color);
   font-size: 2rem;
   margin-bottom: 1rem;
 }
@@ -2160,7 +2263,7 @@ section,
 }
 
 .contact .info-box a {
-  color: var(--contrast-color);
+  color: var(--accent-color);
 }
 
 @media (max-width: 992px) {
@@ -2182,7 +2285,7 @@ section,
 .contact .info-item .icon-box {
   width: 3.5rem;
   height: 3.5rem;
-  background-color: color-mix(in srgb, var(--contrast-color), transparent 85%);
+  background-color: color-mix(in srgb, var(--accent-color), transparent 85%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2193,15 +2296,15 @@ section,
 
 .contact .info-item .icon-box i {
   font-size: 1.5rem;
-  color: var(--contrast-color);
+  color: var(--accent-color);
 }
 
 .contact .info-item:hover .icon-box {
-  background-color: color-mix(in srgb, var(--contrast-color), transparent 70%);
+  background-color: color-mix(in srgb, var(--accent-color), transparent 70%);
 }
 
 .contact .info-item .content h4 {
-  color: var(--contrast-color);
+  color: var(--heading-color);
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
   font-weight: 700;

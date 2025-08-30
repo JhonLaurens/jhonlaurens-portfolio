@@ -1,0 +1,296 @@
+/* ==========================================================================
+   UNIFICACIÓN FINAL DE TIPOGRAFÍA - INTER FONT FAMILY
+   ========================================================================== */
+
+/* Importar fuente Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* ==========================================================================
+   SOBRESCRIBIR TODAS LAS VARIABLES DE FUENTE
+   ========================================================================== */
+
+:root {
+  /* Variables principales */
+  --default-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+  --heading-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+  --nav-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+  
+  /* Variables futuristas */
+  --tech-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+  --futuristic-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+  --cyber-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+  
+  /* Variable unificada */
+  --unified-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* ==========================================================================
+   APLICACIÓN GLOBAL FORZADA
+   ========================================================================== */
+
+/* Aplicar Inter a TODOS los elementos */
+* {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Elementos específicos */
+html,
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Todos los encabezados - MÁXIMA ESPECIFICIDAD */
+html body h1, html body h2, html body h3, html body h4, html body h5, html body h6,
+html body .h1, html body .h2, html body .h3, html body .h4, html body .h5, html body .h6,
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Encabezados específicos con alta especificidad */
+body h3,
+body .h3,
+.container h3,
+.section h3,
+.about h3,
+.resume h3,
+.portfolio h3,
+.services h3,
+.contact h3 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+body h4,
+body .h4,
+.container h4,
+.section h4,
+.about h4,
+.resume h4,
+.portfolio h4,
+.services h4,
+.contact h4 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* ==========================================================================
+   ENCABEZADOS H3 Y H4 - REGLAS ULTRA ESPECÍFICAS
+   ========================================================================== */
+
+/* H3 - Todos los contextos posibles */
+.about .profile-content h3,
+.skills .skills-category h3,
+.resume .resume-side h3,
+.resume .resume-section h3,
+.services .service-card h3,
+.testimonials .client-details h3,
+.contact .info-box h3,
+.contact .contact-form h3,
+.portfolio-details .portfolio-info h3,
+.portfolio-details .portfolio-description .features h3,
+.service-details .content h3,
+.financial-dashboard h3,
+.results-header h3,
+.contact-cta h3,
+.info-box h3,
+.analytics-debug-panel h3,
+.gallery-overlay h3,
+.accessibility-panel h3,
+.portfolio-title-section h3,
+section h3,
+div h3,
+article h3,
+main h3 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* H4 - Todos los contextos posibles */
+.skills .skill-item h4,
+.skills .skill-box h4,
+.resume .resume-section .resume-item h4,
+.portfolio .portfolio-wrap .portfolio-info h4,
+.contact .info-item .content h4,
+.portfolio-details .portfolio-description .features .feature-item h4,
+.service-details .content .features .feature-box h4,
+.service-details .service-info h4,
+.service-details .related-services h4,
+.project-highlight h4,
+.professional-contact h4,
+.contact-cta h4,
+.client-info h4,
+.info-item .content h4,
+section h4,
+div h4,
+article h4,
+main h4 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* ==========================================================================
+   SOBRESCRIBIR FUENTES ESPECÍFICAS PROBLEMÁTICAS
+   ========================================================================== */
+
+/* Sobrescribir Rajdhani en dynamic-contact.css */
+.contact-form .form-group label,
+.contact-form .btn,
+.contact-form input,
+.contact-form textarea,
+.contact-form select,
+.contact-section h2,
+.contact-section h3,
+.contact-section .section-title {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Sobrescribir Orbitron en analytics.css y budget-calculator.css */
+.analytics-dashboard,
+.analytics-card,
+.analytics-metric,
+.budget-calculator,
+.calculator-input,
+.calculator-result,
+.mobile-nav-toggle {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Sobrescribir Courier New */
+.code,
+.analytics-code,
+.tech-display {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Sobrescribir Ubuntu */
+.ubuntu-text,
+.calculator-description {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* ==========================================================================
+   ELEMENTOS DE NAVEGACIÓN Y UI
+   ========================================================================== */
+
+/* Navegación */
+.navbar,
+.navbar-nav,
+.nav-link,
+.dropdown-menu,
+.mobile-nav {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Botones */
+.btn,
+.button,
+button,
+input[type="submit"],
+input[type="button"] {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Formularios */
+input,
+textarea,
+select,
+label {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* ==========================================================================
+   SECCIONES ESPECÍFICAS
+   ========================================================================== */
+
+/* Hero section */
+.hero,
+.hero-title,
+.hero-subtitle,
+.hero-description {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Portfolio */
+.portfolio,
+.portfolio-title,
+.portfolio-description,
+.portfolio-info {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Services */
+.services,
+.service-title,
+.service-description,
+.service-card {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* About */
+.about,
+.about-title,
+.about-description,
+.skills {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Contact */
+.contact,
+.contact-title,
+.contact-info,
+.contact-form {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* ==========================================================================
+   ELEMENTOS FUTURISTAS Y ESPECIALES
+   ========================================================================== */
+
+/* Elementos con clases futuristas */
+.futuristic,
+.tech,
+.cyber,
+.digital,
+.matrix {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE Y PRINT
+   ========================================================================== */
+
+@media print {
+  * {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  * {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+  }
+}
+
+/* ==========================================================================
+   SOBRESCRIBIR CUALQUIER FUENTE RESTANTE
+   ========================================================================== */
+
+/* Fuerza máxima para cualquier elemento que pueda tener fuente diferente */
+[style*="font-family"] {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Elementos con atributos de fuente */
+[font-family] {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Clases comunes que podrían tener fuentes diferentes */
+.text,
+.content,
+.description,
+.title,
+.subtitle,
+.caption,
+.label,
+.info,
+.details {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}

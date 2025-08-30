@@ -1,0 +1,162 @@
+/*--------------------------------------------------------------
+# Visibility Fixes for Portfolio Elements
+# Fixes for elements that are not visible due to opacity: 0
+--------------------------------------------------------------*/
+
+/* Portfolio Info - Make visible by default */
+.portfolio .portfolio-wrap .portfolio-info {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.portfolio .portfolio-wrap .portfolio-info .content {
+  transform: translateY(0) !important;
+}
+
+/* Skills Tooltips - Make visible by default */
+.skills .skill-item .skill-tooltip {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.skills .skill-box .skill-tooltip {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Service Card Actions - Make visible by default */
+.services .service-card .card-action {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+/* Service Card Background Elements - Make visible */
+.services .service-card::before {
+  opacity: 0.1 !important;
+  visibility: visible !important;
+}
+
+/* Portfolio Links - Ensure visibility */
+.portfolio .portfolio-wrap .portfolio-info .portfolio-links a {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Button Elements - Ensure visibility */
+button, .btn, .button {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Link Elements - Ensure visibility */
+a {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Span Elements - Ensure visibility */
+span {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Icon Elements - Ensure visibility */
+i, .icon {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Social Links - Ensure visibility */
+.social-links a {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Navigation Links - Ensure visibility */
+.navmenu a {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Stats Items - Ensure visibility */
+.stats .stats-item {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.stats .stats-item span {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Service Items - Ensure visibility */
+.services .service-item {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Contact Form Elements - Ensure visibility */
+.contact form button {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Testimonial Elements - Ensure visibility */
+.testimonials .testimonial-item {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Enhanced Hover Effects - Keep the interactive feel */
+.portfolio .portfolio-wrap:hover .portfolio-info {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.6) 60%,
+    rgba(0, 0, 0, 0.1) 100%
+  ) !important;
+}
+
+.skills .skill-item:hover .skill-tooltip {
+  transform: translateY(-2px) !important;
+  color: var(--accent-color) !important;
+}
+
+.services .service-card:hover .card-action {
+  transform: translateY(-2px) !important;
+  background-color: var(--heading-color) !important;
+}
+
+/* Ensure text contrast for visibility */
+.portfolio .portfolio-wrap .portfolio-info h4,
+.portfolio .portfolio-wrap .portfolio-info .category {
+  color: var(--contrast-color) !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Fix any remaining invisible elements */
+.hidden-element {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .portfolio .portfolio-wrap .portfolio-info,
+  .skills .skill-tooltip,
+  .services .service-card .card-action {
+    transition: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .portfolio .portfolio-wrap .portfolio-info,
+  .skills .skill-tooltip,
+  .services .service-card .card-action {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    border: 1px solid var(--accent-color) !important;
+  }
+}

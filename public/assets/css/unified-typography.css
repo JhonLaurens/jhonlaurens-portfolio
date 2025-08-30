@@ -1,0 +1,300 @@
+/*--------------------------------------------------------------
+# Unified Typography System
+# Single font family for consistent design across the entire site
+--------------------------------------------------------------*/
+
+/* Import Single Font Family */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Typography Variables Override */
+:root {
+  /* Unified Font Family */
+  --unified-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  
+  /* Override all existing font variables */
+  --default-font: var(--unified-font) !important;
+  --heading-font: var(--unified-font) !important;
+  --nav-font: var(--unified-font) !important;
+  --futuristic-font: var(--unified-font) !important;
+  --tech-font: var(--unified-font) !important;
+  --cyber-font: var(--unified-font) !important;
+}
+
+/* Global Typography Reset */
+* {
+  font-family: var(--unified-font) !important;
+}
+
+/* Body and Base Elements */
+body,
+html {
+  font-family: var(--unified-font) !important;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--unified-font) !important;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+h1, .h1 { font-size: 2.5rem; font-weight: 700; }
+h2, .h2 { font-size: 2rem; font-weight: 600; }
+h3, .h3 { font-size: 1.75rem; font-weight: 600; }
+h4, .h4 { font-size: 1.5rem; font-weight: 500; }
+h5, .h5 { font-size: 1.25rem; font-weight: 500; }
+h6, .h6 { font-size: 1rem; font-weight: 500; }
+
+/* Navigation */
+.navbar,
+.nav,
+.navigation,
+#navmenu,
+.navmenu {
+  font-family: var(--unified-font) !important;
+}
+
+.navbar-nav .nav-link,
+.navmenu a,
+.nav-link {
+  font-family: var(--unified-font) !important;
+  font-weight: 500;
+}
+
+/* Buttons */
+.btn,
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  font-family: var(--unified-font) !important;
+  font-weight: 500;
+}
+
+/* Form Elements */
+input,
+textarea,
+select,
+.form-control,
+.form-select {
+  font-family: var(--unified-font) !important;
+  font-weight: 400;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-family: var(--unified-font) !important;
+  font-weight: 400;
+}
+
+/* Contact Section Specific Fixes */
+.contact .info-box {
+  background-color: var(--surface-color, rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 20px;
+  padding: 40px;
+  height: fit-content;
+}
+
+.contact .info-box h3 {
+  font-family: var(--unified-font) !important;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #00d4ff;
+  margin-bottom: 20px;
+}
+
+.contact .info-box p {
+  font-family: var(--unified-font) !important;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+}
+
+.contact .info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.contact .info-item:hover {
+  background: rgba(0, 212, 255, 0.1);
+  transform: translateX(10px);
+}
+
+.contact .info-item .icon-box {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(45deg, #00d4ff, #ff0096);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.contact .info-item .content h4 {
+  font-family: var(--unified-font) !important;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.contact .info-item .content p {
+  font-family: var(--unified-font) !important;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* Contact Form */
+.contact .contact-form {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact .contact-form h3 {
+  font-family: var(--unified-font) !important;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #00d4ff;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.contact .contact-form p {
+  font-family: var(--unified-font) !important;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Portfolio Section */
+.portfolio .portfolio-wrap .portfolio-info,
+.portfolio .portfolio-wrap .portfolio-info .content {
+  font-family: var(--unified-font) !important;
+}
+
+/* Services Section */
+.services .service-card h3,
+.services .service-card p {
+  font-family: var(--unified-font) !important;
+}
+
+/* Skills Section */
+.skills .skill-item,
+.skills .skill-box {
+  font-family: var(--unified-font) !important;
+}
+
+/* About Section */
+.about .profile-content h3,
+.about .profile-content .profession,
+.about .contact-links .contact-item {
+  font-family: var(--unified-font) !important;
+}
+
+/* Hero Section */
+.hero .hero-text h1,
+.hero .hero-text p,
+.hero .hero-text .btn {
+  font-family: var(--unified-font) !important;
+}
+
+/* Testimonials */
+.testimonials .testimonial-content,
+.testimonials .client-details h3,
+.testimonials .client-details .position {
+  font-family: var(--unified-font) !important;
+}
+
+/* Footer */
+.footer,
+.footer p,
+.footer a {
+  font-family: var(--unified-font) !important;
+}
+
+/* Override Specific Font Declarations */
+.neon-text,
+.cyber-text,
+.tech-text,
+.futuristic-text {
+  font-family: var(--unified-font) !important;
+}
+
+/* Analytics and Special Elements */
+.analytics-widget,
+.budget-calculator,
+.dynamic-contact {
+  font-family: var(--unified-font) !important;
+}
+
+.analytics-widget * {
+  font-family: var(--unified-font) !important;
+}
+
+/* Mobile Navigation */
+.mobile-nav,
+.mobile-nav * {
+  font-family: var(--unified-font) !important;
+}
+
+/* Ensure all children inherit the unified font */
+.contact *,
+.portfolio *,
+.services *,
+.skills *,
+.about *,
+.hero *,
+.testimonials *,
+.footer * {
+  font-family: var(--unified-font) !important;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  h1, .h1 { font-size: 2rem; }
+  h2, .h2 { font-size: 1.75rem; }
+  h3, .h3 { font-size: 1.5rem; }
+  
+  .contact .info-box h3,
+  .contact .contact-form h3 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  h1, .h1 { font-size: 1.75rem; }
+  h2, .h2 { font-size: 1.5rem; }
+  h3, .h3 { font-size: 1.25rem; }
+  
+  .contact .info-box h3,
+  .contact .contact-form h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  * {
+    font-family: var(--unified-font) !important;
+  }
+}
