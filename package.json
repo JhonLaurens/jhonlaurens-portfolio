@@ -1,5 +1,57 @@
 {
+  "name": "snapfolio",
+  "version": "1.0.0",
+  "description": "Portfolio personal de Jhon Laurens - Desarrollador de Software",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "lint:check": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "clean": "rimraf dist",
+    "analyze": "vite-bundle-analyzer"
+  },
   "dependencies": {
-    "@playwright/test": "^1.54.2"
+    "aos": "^2.3.4",
+    "bootstrap": "^5.3.7",
+    "glightbox": "^3.2.0",
+    "isotope-layout": "^3.0.6",
+    "@srexi/purecounterjs": "^1.5.0",
+    "swiper": "^11.0.5",
+    "typed.js": "^2.1.0",
+    "waypoints": "^4.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "vite": "^5.1.4",
+    "vite-bundle-analyzer": "^0.7.0",
+    "playwright": "^1.54.2"
+  },
+  "keywords": [
+    "portfolio",
+    "developer",
+    "software",
+    "security",
+    "bootstrap",
+    "responsive"
+  ],
+  "author": "Jhon Laurens",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JhonLaurens/snapfolio.git"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }

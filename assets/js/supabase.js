@@ -28,7 +28,20 @@ class SupabaseClient {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            return await response.json();
+            
+            // Check if response has content
+            const contentLength = response.headers.get('content-length');
+            if (contentLength === '0' || contentLength === null) {
+                // Return empty array for successful operations with no content
+                return [];
+            }
+            
+            const text = await response.text();
+            if (!text) {
+                return [];
+            }
+            
+            return JSON.parse(text);
         } catch (error) {
             console.error('Supabase request error:', error);
             throw error;
@@ -51,7 +64,7 @@ class SupabaseClient {
 
     // Insert data into a table
     async insert(table, data) {
-        return await this.request(table, {
+        return await this.request(`${table}?select=*`, {
             method: 'POST',
             body: JSON.stringify(data)
         });

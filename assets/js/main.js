@@ -1,281 +1,530 @@
 /**
-* Template Name: SnapFolio
-* Template URL: https://bootstrapmade.com/snapfolio-bootstrap-portfolio-template/
-* Updated: Jul 21 2025 with Bootstrap v5.3.7
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+ * Template Name: SnapFolio
+ * Template URL: https://bootstrapmade.com/snapfolio-bootstrap-portfolio-template/
+ * Updated: Jul 21 2025 with Bootstrap v5.3.7
+ * Author: BootstrapMade.com
+ * License: https://bootstrapmade.com/license/
+ */
 
 (function() {
-  "use strict";
+  'use strict';
+
+  // Utility functions
+  const utils = {
+    /**
+     * Safely query a DOM element
+     * @param {string} selector - CSS selector
+     * @returns {Element|null} - Found element or null
+     */
+    querySelector: (selector) => {
+      try {
+        return document.querySelector(selector);
+      } catch (error) {
+        console.warn(`Invalid selector: ${selector}`);
+        return null;
+      }
+    },
+
+    /**
+     * Safely query multiple DOM elements
+     * @param {string} selector - CSS selector
+     * @returns {NodeList} - Found elements
+     */
+    querySelectorAll: (selector) => {
+      try {
+        return document.querySelectorAll(selector);
+      } catch (error) {
+        console.warn(`Invalid selector: ${selector}`);
+        return [];
+      }
+    },
+
+    /**
+     * Add event listener with error handling
+     * @param {Element} element - Target element
+     * @param {string} event - Event type
+     * @param {Function} handler - Event handler
+     */
+    addEventListenerSafe: (element, event, handler) => {
+      if (element && typeof handler === 'function') {
+        element.addEventListener(event, handler);
+      }
+    }
+  };
 
   /**
-   * Header toggle
+   * Header toggle functionality
    */
-  const headerToggleBtn = document.querySelector('.header-toggle');
+  const initHeaderToggle = () => {
+    const headerToggleBtn = utils.querySelector('.header-toggle');
+    const header = utils.querySelector('#header');
 
-  function headerToggle() {
-    document.querySelector('#header').classList.toggle('header-show');
-    headerToggleBtn.classList.toggle('bi-list');
-    headerToggleBtn.classList.toggle('bi-x');
-  }
-  headerToggleBtn.addEventListener('click', headerToggle);
+    if (!headerToggleBtn || !header) return;
+
+    const toggleHeader = () => {
+      header.classList.toggle('header-show');
+      headerToggleBtn.classList.toggle('bi-list');
+      headerToggleBtn.classList.toggle('bi-x');
+    };
+
+    utils.addEventListenerSafe(headerToggleBtn, 'click', toggleHeader);
+  };
 
   /**
    * Hide mobile nav on same-page/hash links
    */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.header-show')) {
-        headerToggle();
-      }
-    });
+  const initMobileNavHide = () => {
+    const navLinks = utils.querySelectorAll('#navmenu a');
+    const header = utils.querySelector('#header');
+    const headerToggleBtn = utils.querySelector('.header-toggle');
 
-  });
+    if (!header || !headerToggleBtn) return;
+
+    const hideHeader = () => {
+      if (header.classList.contains('header-show')) {
+        header.classList.remove('header-show');
+        headerToggleBtn.classList.add('bi-list');
+        headerToggleBtn.classList.remove('bi-x');
+      }
+    };
+
+    navLinks.forEach(navLink => {
+      utils.addEventListenerSafe(navLink, 'click', hideHeader);
+    });
+  };
 
   /**
    * Toggle mobile nav dropdowns
    */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
+  const initMobileDropdowns = () => {
+    const dropdownToggles = utils.querySelectorAll('.navmenu .toggle-dropdown');
+
+    const toggleDropdown = function(e) {
       e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
       e.stopImmediatePropagation();
+      
+      const parentNode = this.parentNode;
+      const nextSibling = parentNode?.nextElementSibling;
+      
+      if (parentNode) {
+        parentNode.classList.toggle('active');
+      }
+      if (nextSibling) {
+        nextSibling.classList.toggle('dropdown-active');
+      }
+    };
+
+    dropdownToggles.forEach(toggle => {
+      utils.addEventListenerSafe(toggle, 'click', toggleDropdown);
     });
-  });
+  };
 
   /**
-   * Preloader
+   * Preloader functionality
    */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
-  }
-
-  /**
-   * Scroll top button
-   */
-  let scrollTop = document.querySelector('.scroll-top');
-
-  function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+  const initPreloader = () => {
+    const preloader = utils.querySelector('#preloader');
+    
+    if (preloader) {
+      const removePreloader = () => {
+        preloader.remove();
+      };
+      
+      utils.addEventListenerSafe(window, 'load', removePreloader);
     }
-  }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
+  };
 
   /**
-   * Animation on scroll function and init
+   * Scroll to top button functionality
    */
-  function aosInit() {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
-  }
-  window.addEventListener('load', aosInit);
+  const initScrollTop = () => {
+    const scrollTopBtn = utils.querySelector('.scroll-top');
+    
+    if (!scrollTopBtn) return;
+
+    const toggleScrollTopVisibility = () => {
+      const shouldShow = window.scrollY > 100;
+      scrollTopBtn.classList.toggle('active', shouldShow);
+    };
+
+    const scrollToTop = (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    };
+
+    utils.addEventListenerSafe(scrollTopBtn, 'click', scrollToTop);
+    utils.addEventListenerSafe(window, 'load', toggleScrollTopVisibility);
+    utils.addEventListenerSafe(document, 'scroll', toggleScrollTopVisibility);
+  };
 
   /**
-   * Init typed.js
+   * Animation on scroll initialization
    */
-  const selectTyped = document.querySelector('.typed');
-  if (selectTyped) {
-    let typed_strings = selectTyped.getAttribute('data-typed-items');
-    typed_strings = typed_strings.split(',');
+  const initAOS = () => {
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 600,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+      });
+    }
+  };
+
+  /**
+   * Initialize Typed.js
+   */
+  const initTyped = () => {
+    const typedElement = utils.querySelector('.typed');
+    
+    if (!typedElement || typeof Typed === 'undefined') return;
+
+    const typedItems = typedElement.getAttribute('data-typed-items');
+    if (!typedItems) return;
+
+    const typedStrings = typedItems.split(',').map(str => str.trim());
+    
     new Typed('.typed', {
-      strings: typed_strings,
+      strings: typedStrings,
       loop: true,
       typeSpeed: 100,
       backSpeed: 50,
       backDelay: 2000
     });
-  }
+  };
 
   /**
-   * Initiate Pure Counter
+   * Initialize Pure Counter
    */
-  new PureCounter();
+  const initPureCounter = () => {
+    if (typeof PureCounter !== 'undefined') {
+      new PureCounter();
+    }
+  };
 
   /**
-   * Animate the skills items on reveal
+   * Animate skills items on reveal
    */
-  let skillsAnimation = document.querySelectorAll('.skills-animation');
-  skillsAnimation.forEach((item) => {
-    new Waypoint({
-      element: item,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = item.querySelectorAll('.progress .progress-bar');
-        progress.forEach(el => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%';
-        });
-      }
-    });
-  });
+  const initSkillsAnimation = () => {
+    if (typeof Waypoint === 'undefined') return;
 
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
-
-  /**
-   * Init isotope layout and filters
-   */
-  document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
-    let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
-    let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
-    let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
-
-    let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
-      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
-        itemSelector: '.isotope-item',
-        layoutMode: layout,
-        filter: filter,
-        sortBy: sort
+    const skillsElements = utils.querySelectorAll('.skills-animation');
+    
+    skillsElements.forEach((item) => {
+      new Waypoint({
+        element: item,
+        offset: '80%',
+        handler: function() {
+          const progressBars = item.querySelectorAll('.progress .progress-bar');
+          progressBars.forEach(bar => {
+            const value = bar.getAttribute('aria-valuenow');
+            if (value) {
+              bar.style.width = `${value}%`;
+            }
+          });
+        }
       });
     });
-
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
-      filters.addEventListener('click', function() {
-        isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
-        this.classList.add('filter-active');
-        initIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        if (typeof aosInit === 'function') {
-          aosInit();
-        }
-      }, false);
-    });
-
-  });
+  };
 
   /**
-   * Init swiper sliders
+   * Initialize GLightbox
    */
-  function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
+  const initGLightbox = () => {
+    if (typeof GLightbox !== 'undefined') {
+      GLightbox({
+        selector: '.glightbox'
+      });
+    }
+  };
 
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
+  /**
+   * Initialize Isotope layout and filters
+   */
+  const initIsotope = () => {
+    if (typeof Isotope === 'undefined' || typeof imagesLoaded === 'undefined') return;
+
+    const isotopeLayouts = utils.querySelectorAll('.isotope-layout');
+    
+    isotopeLayouts.forEach((isotopeItem) => {
+      const layout = isotopeItem.getAttribute('data-layout') || 'masonry';
+      const filter = isotopeItem.getAttribute('data-default-filter') || '*';
+      const sort = isotopeItem.getAttribute('data-sort') || 'original-order';
+      const container = isotopeItem.querySelector('.isotope-container');
+      
+      if (!container) return;
+
+      let isotopeInstance;
+      
+      imagesLoaded(container, () => {
+        isotopeInstance = new Isotope(container, {
+          itemSelector: '.isotope-item',
+          layoutMode: layout,
+          filter: filter,
+          sortBy: sort
+        });
+      });
+
+      const filterButtons = isotopeItem.querySelectorAll('.isotope-filters li');
+      
+      filterButtons.forEach((button) => {
+        const handleFilterClick = function() {
+          // Remove active class from all buttons
+          const activeButton = isotopeItem.querySelector('.isotope-filters .filter-active');
+          if (activeButton) {
+            activeButton.classList.remove('filter-active');
+          }
+          
+          // Add active class to clicked button
+          this.classList.add('filter-active');
+          
+          // Apply filter
+          if (isotopeInstance) {
+            const filterValue = this.getAttribute('data-filter');
+            isotopeInstance.arrange({ filter: filterValue });
+          }
+          
+          // Reinitialize AOS if available
+          if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+          }
+        };
+        
+        utils.addEventListenerSafe(button, 'click', handleFilterClick);
+      });
+    });
+  };
+
+  /**
+   * Initialize Swiper sliders
+   */
+  const initSwiper = () => {
+    if (typeof Swiper === 'undefined') return;
+
+    const swiperElements = utils.querySelectorAll('.init-swiper');
+    
+    swiperElements.forEach((swiperElement) => {
+      const configElement = swiperElement.querySelector('.swiper-config');
+      if (!configElement) return;
+      
+      try {
+        const config = JSON.parse(configElement.innerHTML.trim());
+        
+        // Initialize Swiper with configuration
         new Swiper(swiperElement, config);
+        
+      } catch (error) {
+        console.error('Error initializing Swiper:', error, swiperElement);
       }
     });
-  }
-
-  window.addEventListener("load", initSwiper);
+  };
 
   /**
-   * Correct scrolling position upon page load for URLs containing hash links.
+   * Mobile dropdown functionality
    */
-  window.addEventListener('load', function(e) {
-    if (window.location.hash) {
-      if (document.querySelector(window.location.hash)) {
-        setTimeout(() => {
-          let section = document.querySelector(window.location.hash);
-          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
+  const initMobileDropdowns = () => {
+    const dropdownToggles = utils.querySelectorAll('.navmenu .toggle-dropdown');
+    
+    dropdownToggles.forEach((toggle) => {
+      utils.addEventListenerSafe(toggle, 'click', (e) => {
+        e.preventDefault();
+        const dropdown = toggle.parentNode.nextElementSibling;
+        if (dropdown) {
+          dropdown.classList.toggle('dropdown-active');
+          toggle.classList.toggle('bi-chevron-up');
+          toggle.classList.toggle('bi-chevron-down');
+        }
+      });
+    });
+  };
+
+  /**
+   * Smooth scrolling for hash links
+   */
+  const initHashLinkScrolling = () => {
+    const hashLinks = utils.querySelectorAll('a[href^="#"]:not([href="#"])');
+    
+    hashLinks.forEach((link) => {
+      utils.addEventListenerSafe(link, 'click', (e) => {
+        const targetId = link.getAttribute('href');
+        const targetElement = utils.querySelector(targetId);
+        
+        if (targetElement) {
+          e.preventDefault();
+          const headerOffset = 60;
+          const elementPosition = targetElement.offsetTop;
+          const offsetPosition = elementPosition - headerOffset;
+          
           window.scrollTo({
-            top: section.offsetTop - parseInt(scrollMarginTop),
+            top: offsetPosition,
             behavior: 'smooth'
           });
-        }, 100);
-      }
-    }
-  });
+        }
+      });
+    });
+  };
 
   /**
-   * Navmenu Scrollspy
+   * Navigation menu scrollspy
    */
-  let navmenulinks = document.querySelectorAll('.navmenu a');
+  const initNavMenuScrollspy = () => {
+    const navLinks = utils.querySelectorAll('#navmenu a[href^="#"]');
+    if (navLinks.length === 0) return;
 
-  function navmenuScrollspy() {
-    navmenulinks.forEach(navmenulink => {
-      if (!navmenulink.hash) return;
-      let section = document.querySelector(navmenulink.hash);
-      if (!section) return;
-      let position = window.scrollY + 200;
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
-        navmenulink.classList.add('active');
-      } else {
-        navmenulink.classList.remove('active');
+    const sections = [];
+    navLinks.forEach((link) => {
+      const targetId = link.getAttribute('href');
+      const targetElement = utils.querySelector(targetId);
+      if (targetElement) {
+        sections.push({
+          element: targetElement,
+          link: link,
+          id: targetId
+        });
       }
-    })
-  }
-  window.addEventListener('load', navmenuScrollspy);
-  document.addEventListener('scroll', navmenuScrollspy);
+    });
+
+    const updateActiveLink = () => {
+      const scrollPosition = window.scrollY + 200;
+      
+      let activeSection = null;
+      sections.forEach((section) => {
+        const sectionTop = section.element.offsetTop;
+        const sectionBottom = sectionTop + section.element.offsetHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          activeSection = section;
+        }
+      });
+      
+      // Remove active class from all links
+      navLinks.forEach((link) => {
+        link.classList.remove('active');
+      });
+      
+      // Add active class to current section link
+      if (activeSection) {
+        activeSection.link.classList.add('active');
+      }
+    };
+
+    utils.addEventListenerSafe(window, 'scroll', updateActiveLink);
+    utils.addEventListenerSafe(window, 'load', updateActiveLink);
+  };
 
   /**
    * Contact Form Handler with Supabase
    */
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
+  const initContactForm = () => {
+    const contactForm = utils.querySelector('#contact-form');
+    if (!contactForm) return;
+
+    const handleFormSubmit = async (e) => {
       e.preventDefault();
       
-      const formData = new FormData(this);
-      const loadingElement = this.querySelector('.loading');
-      const errorElement = this.querySelector('.error-message');
-      const successElement = this.querySelector('.sent-message');
-      const submitButton = this.querySelector('button[type="submit"]');
+      const formData = new FormData(contactForm);
+      const elements = {
+        loading: contactForm.querySelector('.loading'),
+        error: contactForm.querySelector('.error-message'),
+        success: contactForm.querySelector('.sent-message'),
+        submit: contactForm.querySelector('button[type="submit"]')
+      };
+
+      // Reset UI state
+      const setElementDisplay = (element, display) => {
+        if (element) element.style.display = display;
+      };
       
-      // Reset messages
-      loadingElement.style.display = 'block';
-      errorElement.style.display = 'none';
-      successElement.style.display = 'none';
-      submitButton.disabled = true;
+      setElementDisplay(elements.loading, 'block');
+      setElementDisplay(elements.error, 'none');
+      setElementDisplay(elements.success, 'none');
+      
+      if (elements.submit) {
+        elements.submit.disabled = true;
+      }
       
       try {
-        // Prepare contact data
-        const contactData = {
-          name: formData.get('name'),
-          email: formData.get('email'),
-          subject: formData.get('subject'),
-          message: formData.get('message'),
-          created_at: new Date().toISOString()
-        };
+        // Validate required fields
+        const requiredFields = ['name', 'email', 'subject', 'message'];
+        const contactData = {};
         
-        // Save to Supabase using DatabaseManager
+        for (const field of requiredFields) {
+          const value = formData.get(field);
+          if (!value || !value.trim()) {
+            throw new Error(`El campo ${field} es requerido`);
+          }
+          contactData[field] = value.trim();
+        }
+        
+        contactData.created_at = new Date().toISOString();
+        
+        // Check if DatabaseManager is available
+        if (!window.DatabaseManager || typeof window.DatabaseManager.saveContactData !== 'function') {
+          throw new Error('Sistema de base de datos no disponible');
+        }
+        
+        // Save to Supabase
         const result = await window.DatabaseManager.saveContactData(contactData);
         
         if (result.success) {
-          loadingElement.style.display = 'none';
-          successElement.style.display = 'block';
+          setElementDisplay(elements.loading, 'none');
+          setElementDisplay(elements.success, 'block');
           contactForm.reset();
         } else {
           throw new Error(result.error || 'Error al enviar el mensaje');
         }
         
       } catch (error) {
-        console.error('Error sending contact form:', error);
-        loadingElement.style.display = 'none';
-        errorElement.textContent = 'Error al enviar el mensaje. Por favor, intenta de nuevo.';
-        errorElement.style.display = 'block';
+        console.error('Contact form error:', error);
+        setElementDisplay(elements.loading, 'none');
+        
+        if (elements.error) {
+          elements.error.textContent = error.message || 'Error al enviar el mensaje. Por favor, intenta de nuevo.';
+          setElementDisplay(elements.error, 'block');
+        }
       } finally {
-        submitButton.disabled = false;
+        if (elements.submit) {
+          elements.submit.disabled = false;
+        }
       }
-    });
+    };
+
+    utils.addEventListenerSafe(contactForm, 'submit', handleFormSubmit);
+  };
+
+  // Initialize all components when DOM is ready
+  const initializeApp = () => {
+    initHeaderToggle();
+    initMobileNavHide();
+    initMobileDropdowns();
+    initPreloader();
+    initScrollTop();
+    initTyped();
+    initPureCounter();
+    initSkillsAnimation();
+    initGLightbox();
+    initIsotope();
+    initHashLinkScrolling();
+    initNavMenuScrollspy();
+    initContactForm();
+  };
+
+  // Initialize AOS and Swiper after window load
+  const initializeAfterLoad = () => {
+    initAOS();
+    initSwiper();
+  };
+
+  // Start the application
+  if (document.readyState === 'loading') {
+    utils.addEventListenerSafe(document, 'DOMContentLoaded', initializeApp);
+  } else {
+    initializeApp();
   }
+  
+  utils.addEventListenerSafe(window, 'load', initializeAfterLoad);
 
 })();

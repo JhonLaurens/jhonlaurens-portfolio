@@ -1057,7 +1057,7 @@
               <h3>Ponte en Contacto</h3>
               <p>¿Tienes un proyecto en mente? Me encantaría escuchar sobre tus ideas y cómo puedo ayudarte a hacerlas realidad.</p>
 
-              <form id="contact-form" class="php-email-form">
+              <form id="contact-form">
                 <div class="row gy-4">
 
                   <div class="col-md-6">
@@ -1123,7 +1123,6 @@
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/typed.js/typed.umd.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -1133,14 +1132,50 @@
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Translations JS File -->
-  <script src="assets/js/translations.js"></script>
+  <!-- Preloader Safety Timeout -->
+  <script>
+    // Remove preloader after 5 seconds as a safety measure
+    setTimeout(function() {
+      const preloader = document.querySelector('#preloader');
+      if (preloader) {
+        console.warn('Preloader removed by timeout - check for JavaScript errors');
+        preloader.style.opacity = '0';
+        setTimeout(() => preloader.remove(), 300);
+      }
+    }, 5000);
+  </script>
+
+  <!-- Main Application (ES6 Modules) -->
+  <script type="module">
+    try {
+      const app = await import('./src/js/main.js');
+      console.log('SnapFolio app loaded successfully');
+    } catch (error) {
+      console.error('Failed to load SnapFolio app:', error);
+      // Remove preloader on error
+      const preloader = document.querySelector('#preloader');
+      if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => preloader.remove(), 300);
+      }
+      // Show error message
+      document.body.innerHTML += '<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:red;color:white;padding:20px;border-radius:8px;z-index:1000000;">Error loading application. Please refresh the page.</div>';
+    }
+  </script>
   
-  <!-- Supabase Database JS File -->
-  <script src="assets/js/supabase.js"></script>
-  
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <!-- Fallback for older browsers -->
+  <script nomodule>
+    console.warn('Your browser does not support ES6 modules. Loading legacy scripts...');
+    // Remove preloader for legacy browsers
+    setTimeout(function() {
+      const preloader = document.querySelector('#preloader');
+      if (preloader) preloader.remove();
+    }, 2000);
+    // Load legacy scripts as fallback
+    document.write('<script src="assets/js/translations.js"><\/script>');
+    document.write('<script src="assets/js/supabase.js"><\/script>');
+    document.write('<script src="assets/js/main.js"><\/script>');
+  </script>
 
 </body>
 

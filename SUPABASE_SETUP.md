@@ -2,20 +2,43 @@
 
 Este documento te guiará para configurar Supabase y conectar la base de datos con tu portafolio.
 
-## 1. Configurar tu proyecto Supabase
+## 🔧 Configuración de Supabase
 
-### Paso 1: Obtener la URL del proyecto
-1. Ve a tu [dashboard de Supabase](https://supabase.com/dashboard)
-2. Selecciona tu proyecto
-3. Ve a **Settings** > **API**
-4. Copia la **Project URL** (algo como: `https://abcdefghijklmnop.supabase.co`)
+### ⚠️ IMPORTANTE: Pasos Obligatorios
 
-### Paso 2: Actualizar la configuración
-1. Abre el archivo `assets/js/supabase.js`
-2. Reemplaza `your-project-ref` en la línea 3 con tu referencia de proyecto:
-   ```javascript
-   const SUPABASE_URL = 'https://tu-referencia-proyecto.supabase.co';
-   ```
+**Si tu formulario de contacto no funciona, es probable que no hayas creado la tabla `contacts` en Supabase.**
+
+### 1. Crear la tabla contacts (CRÍTICO)
+1. Ve a tu dashboard de Supabase: https://supabase.com/dashboard
+2. Selecciona tu proyecto: **portafolio-jhonlaurens**
+3. Ve a **SQL Editor** en el menú lateral
+4. Copia y pega el siguiente código SQL:
+
+```sql
+-- Crear la tabla contacts
+CREATE TABLE IF NOT EXISTS contacts (
+    id BIGSERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    subject TEXT NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Habilitar Row Level Security
+ALTER TABLE contacts ENABLE ROW LEVEL SECURITY;
+
+-- Permitir inserciones públicas
+CREATE POLICY "Allow public inserts" ON contacts
+    FOR INSERT
+    WITH CHECK (true);
+```
+
+5. Haz clic en **"Run"** para ejecutar el código
+6. Verifica en **Table Editor** que la tabla `contacts` aparezca
+
+### 2. Verificar la configuración
+✅ **Ya configurado**: La URL del proyecto y API key están correctamente configuradas para `portafolio-jhonlaurens`
 
 ## 2. Crear la tabla de contactos
 
