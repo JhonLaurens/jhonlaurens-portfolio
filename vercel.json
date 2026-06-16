@@ -132,7 +132,6 @@
   "outputDirectory": "public",
 
   "framework": null,
-  "public": true,
 
   "git": {
     "deploymentEnabled": {
