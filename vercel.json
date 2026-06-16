@@ -53,7 +53,7 @@
   },
 
   "cleanUrls": true,
-  "trailingSlash": true,
+  "trailingSlash": false,
 
   "installCommand": "npm install",
   "buildCommand": "echo 'Static site — no build step required'",
