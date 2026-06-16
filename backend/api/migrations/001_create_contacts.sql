@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS contacts (
   subject    VARCHAR(255)  NOT NULL DEFAULT 'Contacto desde Portfolio',
   message    TEXT          NOT NULL,
   source     VARCHAR(100)  NOT NULL DEFAULT 'portfolio-website',
+  status     VARCHAR(50)   NOT NULL DEFAULT 'pending',
   created_at TIMESTAMPTZ   NOT NULL DEFAULT NOW()
 );
 

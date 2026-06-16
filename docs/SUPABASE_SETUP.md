@@ -1,116 +1,100 @@
-# Configuración de Supabase para SnapFolio
+# Configuracion de Supabase para el formulario
 
-Este documento te guiará para configurar Supabase y conectar la base de datos con tu portafolio.
+Esta guia reconstruye la tabla de contactos y conecta el formulario del portfolio con Supabase.
 
-## 1. Configurar tu proyecto Supabase
+## 1. Crear o reconstruir la tabla
 
-### Paso 1: Obtener la URL del proyecto
-1. Ve a tu [dashboard de Supabase](https://supabase.com/dashboard)
-2. Selecciona tu proyecto
-3. Ve a **Settings** > **API**
-4. Copia la **Project URL** (algo como: `https://abcdefghijklmnop.supabase.co`)
+### Opcion A: desde Codex/terminal
 
-### Paso 2: Actualizar la configuración
-1. Abre el archivo `assets/js/supabase.js`
-2. Reemplaza `your-project-ref` en la línea 3 con tu referencia de proyecto:
-   ```javascript
-   const SUPABASE_URL = 'https://tu-referencia-proyecto.supabase.co';
-   ```
+1. Crea `.env.local` desde `.env.example`.
+2. Agrega tu `DATABASE_URL` real de Supabase.
+3. Ejecuta:
 
-## 2. Crear la tabla de contactos
-
-Ejecuta este SQL en el **SQL Editor** de Supabase:
-
-```sql
--- Crear tabla de contactos
-CREATE TABLE contacts (
-    id BIGSERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
-    email TEXT NOT NULL,
-    subject TEXT NOT NULL,
-    message TEXT NOT NULL,
-    created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Habilitar Row Level Security (RLS)
-ALTER TABLE contacts ENABLE ROW LEVEL SECURITY;
-
--- Crear política para permitir inserciones públicas
-CREATE POLICY "Allow public inserts" ON contacts
-    FOR INSERT
-    WITH CHECK (true);
-
--- Crear política para permitir lecturas autenticadas (opcional)
-CREATE POLICY "Allow authenticated reads" ON contacts
-    FOR SELECT
-    USING (auth.role() = 'authenticated');
+```bash
+npm run db:setup
 ```
 
-## 3. Configurar políticas de seguridad (opcional)
+### Opcion B: desde Supabase SQL Editor
 
-Si quieres ver los contactos desde el dashboard:
+1. Entra al dashboard de Supabase.
+2. Abre tu proyecto.
+3. Ve a **SQL Editor**.
+4. Copia y ejecuta el contenido de:
 
-```sql
--- Permitir que solo usuarios autenticados vean los contactos
-CREATE POLICY "Allow authenticated users to view contacts" ON contacts
-    FOR SELECT
-    USING (auth.role() = 'authenticated');
+```text
+backend/sql/supabase_contacts.sql
 ```
 
-## 4. Verificar la configuración
+Ese script crea:
 
-1. Abre tu portafolio en el navegador
-2. Ve a la sección de contacto
-3. Llena el formulario y envíalo
-4. Verifica en tu dashboard de Supabase que el contacto se guardó en la tabla `contacts`
+- `public.contacts`
+- indices para `created_at` y `status`
+- trigger de `updated_at`
+- Row Level Security
+- politica publica de insercion para el formulario
+- politicas de lectura/actualizacion solo para usuarios autenticados
+- vista `public.contact_stats`
 
-## 5. Variables de entorno (para desarrollo local)
+El script es idempotente: puedes ejecutarlo varias veces sin duplicar la tabla.
 
-El archivo `.env` contiene:
-```
-SUPABASE_URL=https://your-project-ref.supabase.co
-SUPABASE_ANON_KEY=sbp_1641563c55288a1dad3b1687f17d279c0379554e
-```
+## 2. Confirmar la conexion del sitio
 
-**Nota:** Para aplicaciones web estáticas como esta, las variables de entorno no se cargan automáticamente. Las credenciales están directamente en `supabase.js` para simplicidad.
+El formulario envia los mensajes a:
 
-## 6. Funcionalidades adicionales
-
-Puedes extender la funcionalidad agregando:
-
-- **Tabla de proyectos:** Para gestionar tu portafolio dinámicamente
-- **Tabla de visitantes:** Para analytics básicos
-- **Autenticación:** Para un panel de administración
-
-### Ejemplo de tabla de proyectos:
-```sql
-CREATE TABLE projects (
-    id BIGSERIAL PRIMARY KEY,
-    title TEXT NOT NULL,
-    description TEXT,
-    image_url TEXT,
-    project_url TEXT,
-    github_url TEXT,
-    technologies TEXT[],
-    featured BOOLEAN DEFAULT false,
-    created_at TIMESTAMPTZ DEFAULT NOW()
-);
+```text
+/api/contact
 ```
 
-## Solución de problemas
+Ese endpoint esta en:
 
-### Error de CORS
-Si recibes errores de CORS, verifica que:
-1. La URL de Supabase sea correcta
-2. La clave anónima sea válida
-3. Las políticas RLS estén configuradas correctamente
+```text
+backend/api/server.js
+```
 
-### Formulario no envía
-1. Abre las herramientas de desarrollador (F12)
-2. Ve a la consola para ver errores
-3. Verifica que `supabase.js` se cargue antes que `main.js`
+Para produccion, configura `DATABASE_URL` en Vercel. Si prefieres usar variables separadas, conserva en privado:
 
-### Datos no aparecen en Supabase
-1. Verifica que la tabla `contacts` exista
-2. Confirma que las políticas RLS permitan inserciones
-3. Revisa los logs en el dashboard de Supabase
+```text
+HOST_NAME=
+PORT=
+DATABASE_NAME=
+USUARIO_NAME=
+PASS_DB=
+```
+
+No expongas `DATABASE_URL`, `PASS_DB` ni service role keys en JavaScript publico.
+
+## 3. Probar el formulario
+
+1. Ejecuta el sitio local:
+
+```bash
+npm run dev
+```
+
+2. Abre `http://localhost:8000`.
+3. Envia un mensaje desde la seccion Contacto.
+4. En Supabase, revisa **Table Editor > contacts**.
+
+Si el mensaje no aparece, abre la consola del navegador y revisa el error de Supabase.
+
+## 4. Variables utiles
+
+`.env.example` incluye variables de referencia:
+
+```text
+SUPABASE_URL=
+SUPABASE_ANON_KEY=
+DATABASE_URL=
+```
+
+El formulario actual no necesita `SUPABASE_ANON_KEY`, porque inserta desde el backend `/api/contact`.
+
+`DATABASE_URL` es solo para backend o scripts privados. No debe exponerse en el navegador.
+
+## 5. Verificacion rapida
+
+El build valida que el sitio no tenga referencias rotas conocidas:
+
+```bash
+npm run build
+```

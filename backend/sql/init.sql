@@ -25,13 +25,15 @@ CREATE INDEX IF NOT EXISTS idx_page_visits_date ON page_visits(visited_at);
 CREATE INDEX IF NOT EXISTS idx_page_visits_ip ON page_visits(ip_address);
 
 -- Tabla para contactos del portfolio
-CREATE TABLE IF NOT EXISTS portfolio_contacts (
+CREATE TABLE IF NOT EXISTS contacts (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    subject VARCHAR(500),
+    subject VARCHAR(500) DEFAULT 'Contacto desde Portfolio',
     message TEXT NOT NULL,
-    submitted_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    source VARCHAR(100) DEFAULT 'portfolio-website',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     status VARCHAR(50) DEFAULT 'pending',
     responded_at TIMESTAMP WITH TIME ZONE
 );
@@ -103,12 +105,12 @@ SELECT
     (SELECT COUNT(*) FROM page_visits) as total_visits,
     (SELECT COUNT(DISTINCT ip_address) FROM page_visits) as unique_visitors,
     (SELECT COUNT(*) FROM page_visits WHERE visited_at >= CURRENT_DATE) as today_visits,
-    (SELECT COUNT(*) FROM portfolio_contacts WHERE status = 'pending') as pending_contacts,
+    (SELECT COUNT(*) FROM contacts WHERE status = 'pending') as pending_contacts,
     (SELECT COUNT(*) FROM featured_projects WHERE status = 'active') as active_projects;
 
 -- Comentarios para documentación
 COMMENT ON TABLE page_visits IS 'Registro de visitas al portfolio para analytics';
-COMMENT ON TABLE portfolio_contacts IS 'Contactos recibidos a través del formulario del portfolio';
+COMMENT ON TABLE contacts IS 'Contactos recibidos a través del formulario del portfolio';
 COMMENT ON TABLE featured_projects IS 'Proyectos destacados del portfolio';
 COMMENT ON TABLE performance_metrics IS 'Métricas de rendimiento y KPIs del portfolio';
 
