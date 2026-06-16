@@ -29,7 +29,7 @@ export default async function handler(req, res) {
   }
 
   if (!buildDatabaseUrl()) {
-    return res.status(500).json({ error: "La base de datos no esta configurada." });
+    return res.status(500).json({ error: "La base de datos no está configurada." });
   }
 
   const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
