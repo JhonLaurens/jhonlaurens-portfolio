@@ -1,0 +1,17 @@
+{
+  "name": "Jhon Laurens Portfolio",
+  "short_name": "Jhon Laurens",
+  "description": "Desarrollador de Software Backend, Automatización, Datos y Banca.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fbfcfe",
+  "theme_color": "#0b2d4d",
+  "icons": [
+    {
+      "src": "/assets/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

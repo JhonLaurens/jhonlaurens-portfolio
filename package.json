@@ -1,0 +1,41 @@
+{
+  "name": "jhonlaurens-portfolio",
+  "version": "1.0.1",
+  "description": "Portfolio profesional de Jhon Laurens - Data Engineer & AI Specialist",
+  "private": true,
+  "main": "public/index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000 --directory public",
+    "start": "python -m http.server 8000 --directory public",
+    "build": "npm run validate",
+    "validate": "node scripts/validate-site.js",
+    "db:setup": "node scripts/setup-supabase-db.js",
+    "db:import-contacts": "node scripts/import-contacts-backup.js",
+    "db:count-contacts": "node scripts/count-contacts.js",
+    "test:contact": "node scripts/test-contact-endpoint.js",
+    "vercel-build": "npm run build"
+  },
+  "keywords": [
+    "portfolio",
+    "data-engineer",
+    "ai-specialist",
+    "core-banking",
+    "financial-technology",
+    "python",
+    "postgresql",
+    "machine-learning"
+  ],
+  "author": "Jhon Laurens <jhonlaurens@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.8.1",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "node-cron": "^3.0.2",
+    "pg": "^8.11.0",
+    "redis": "^4.6.7"
+  }
+}

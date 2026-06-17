@@ -105,3 +105,5 @@ Dockerfile.dev
 contact-submissions/
 *.contact
 .vercel
+
+.env
