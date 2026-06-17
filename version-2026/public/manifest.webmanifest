@@ -9,8 +9,13 @@
   "theme_color": "#0b2d4d",
   "icons": [
     {
-      "src": "/assets/favicon.png",
+      "src": "/assets/brand/logo-mark-192.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/brand/logo-mark.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
