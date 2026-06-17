@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "jhonlaurens-portfolio",
-  "alias": ["jhonlaurens.vercel.app"],
+  "alias": ["jhonlaurens-portfolio.vercel.app"],
   "scope": "jhonlaurens-projects",
   
   "builds": [

@@ -12,10 +12,10 @@ export default defineConfig({
     rollupOptions: {
       input: {
         home: resolve(root, "index.html"),
-        servicios: resolve(root, "servicios/index.html"),
-        proyectos: resolve(root, "proyectos/index.html"),
-        documentacion: resolve(root, "documentacion/index.html"),
         sobreMi: resolve(root, "sobre-mi/index.html"),
+        experiencia: resolve(root, "experiencia/index.html"),
+        proyectos: resolve(root, "proyectos/index.html"),
+        stack: resolve(root, "stack/index.html"),
         contacto: resolve(root, "contacto/index.html")
       }
     }

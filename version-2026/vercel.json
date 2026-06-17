@@ -1,6 +1,28 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/servicios",
+      "destination": "/stack",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/:path*",
+      "destination": "/stack",
+      "permanent": true
+    },
+    {
+      "source": "/documentacion",
+      "destination": "/experiencia",
+      "permanent": true
+    },
+    {
+      "source": "/documentacion/:path*",
+      "destination": "/experiencia",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
