@@ -58,7 +58,7 @@
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header"><div class="nav-wrap"><a class="brand" href="/" aria-label="Jhon Laurens - Backend, automatización, datos y banca"><img class="brand-logo protected-image" src="/assets/brand/logo-mark-192.png" alt="" width="44" height="44" loading="eager" draggable="false" /><span class="brand-copy"><strong>Jhon Laurens</strong><span>Backend · Automatización · Datos · Banca</span></span></a>
-<button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-links">Menu</button>
+<button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú"><span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span></button>
 <nav class="nav-links" id="nav-links" data-nav-links aria-label="Navegación principal">
   <a href="/">Inicio</a>
   <a href="/sobre-mi/">Sobre mí</a>
@@ -74,11 +74,11 @@
           <p class="eyebrow">Portfolio profesional</p>
           <h1>Backend, automatización y datos para procesos financieros.</h1>
           <p class="lead">Desarrollo soluciones internas con Java Spring Boot, React, Python, SQL y n8n para Product Delivery, soporte de aplicaciones, calidad de datos y operación bancaria.</p>
-          <div class="actions">
+          <div class="actions hero-actions">
             <a class="button primary" href="/proyectos/">Ver proyectos técnicos</a>
-            <a class="button secondary" href="/contacto/">Contactar</a>
-            <a class="button secondary" href="/assets/doc/cv/cv.pdf" download="CV-Jhon-Laurens.pdf">Descargar CV</a>
+            <a class="button ghost" href="/contacto/">Contactar</a>
           </div>
+          <a class="cv-inline-link" href="/assets/doc/cv/cv.pdf" download="CV-Jhon-Laurens.pdf">Descargar CV ↓</a>
           <ul class="trust-list" aria-label="Señales de experiencia técnica">
             <li>Experiencia en banca, core bancario, soporte de aplicaciones e innovación.</li>
             <li>Spring Boot, arquitectura hexagonal, React, Python, SQL, n8n y PostgreSQL.</li>
@@ -129,10 +129,10 @@
           <p class="lead">Los proyectos están ordenados por relevancia para Backend Developer Junior, Automation Developer y Software Developer en banca/fintech.</p>
         </div>
         <div class="stack-list">
-          <a class="row-link" href="/proyectos/">Spring Boot + React + arquitectura limpia</a>
-          <a class="row-link" href="/proyectos/">Automatización n8n + Python</a>
-          <a class="row-link" href="/experiencia/">Experiencia en core bancario y soporte</a>
-          <a class="row-link" href="/stack/">Stack técnico real</a>
+          <a class="row-link" href="/proyectos/"><span>Spring Boot + React + arquitectura limpia</span></a>
+          <a class="row-link" href="/proyectos/"><span>Automatización n8n + Python</span></a>
+          <a class="row-link" href="/experiencia/"><span>Experiencia en core bancario y soporte</span></a>
+          <a class="row-link" href="/stack/"><span>Stack técnico real</span></a>
         </div>
       </div>
     </section>
@@ -150,7 +150,7 @@
         </div>
         <div class="contact-panel">
           <h3 class="form-title">Hablemos del rol o proyecto</h3>
-          <form class="form" data-contact-form>
+          <form class="form" data-contact-form novalidate>
             <input type="hidden" name="source" value="home-contact-panel" />
             <div class="field"><label for="home-name">Nombre</label><input id="home-name" name="name" autocomplete="name" required minlength="2" maxlength="100" /></div>
             <div class="field"><label for="home-email">Correo</label><input id="home-email" name="email" type="email" autocomplete="email" required /></div>
