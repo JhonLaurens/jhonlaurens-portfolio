@@ -74,6 +74,11 @@ p { margin: 0; color: var(--muted); }
 .hero { padding: 74px 0 44px; background: linear-gradient(180deg, #f8fbfc 0%, #ffffff 62%, #eef7f8 100%); overflow-x: clip; }
 .hero-card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); padding: 20px; min-width: 0; }
 .portrait { aspect-ratio: 4 / 5; width: 100%; object-fit: cover; border-radius: 8px; }
+.visual-card { margin: 0; border: 1px solid var(--line); border-radius: 8px; background: white; padding: 12px; box-shadow: 0 12px 34px rgba(16, 24, 40, .08); min-width: 0; }
+.section-visual, .project-media { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; background: #dbe5ee; }
+.project-media { margin: 0 0 22px; border: 1px solid rgba(217, 226, 236, .75); }
+.contact-visual { margin-top: 26px; }
+.protected-image { user-select: none; -webkit-user-select: none; -webkit-user-drag: none; }
 .metric-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 16px; min-width: 0; }
 .metric { padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: #f8fbfc; }
 .metric strong { display: block; color: var(--navy); font-size: 1.45rem; line-height: 1; }
@@ -100,6 +105,7 @@ p { margin: 0; color: var(--muted); }
 .mini-list { margin: 18px 0 0; padding-left: 1.1rem; color: #344054; }
 .mini-list li + li { margin-top: 8px; }
 .split-list { display: grid; grid-template-columns: minmax(0, .95fr) minmax(320px, 1.05fr); gap: 42px; align-items: start; }
+.split-list .card-grid { grid-template-columns: 1fr; margin-top: 0; }
 .stack-list { display: grid; gap: 12px; }
 .row-link {
   display: flex;

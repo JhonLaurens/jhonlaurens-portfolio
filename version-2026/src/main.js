@@ -15,3 +15,8 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
   const href = new URL(link.getAttribute("href"), window.location.origin).pathname.replace(/\/$/, "") || "/";
   if (href === currentPath) link.setAttribute("aria-current", "page");
 });
+
+document.querySelectorAll("img.protected-image").forEach((image) => {
+  image.addEventListener("contextmenu", (event) => event.preventDefault());
+  image.addEventListener("dragstart", (event) => event.preventDefault());
+});
