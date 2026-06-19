@@ -1,7 +1,5 @@
 export default function handler(req, res) {
-  const baseUrl = process.env.VERCEL_URL 
-    ? `https://${process.env.VERCEL_URL}`
-    : 'https://jhonlaurens.vercel.app';
+  const baseUrl = process.env.SITE_URL || 'https://jhonlaurens-portfolio.vercel.app';
 
   const robots = `User-agent: *
 Allow: /

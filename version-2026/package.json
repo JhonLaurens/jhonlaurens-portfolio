@@ -1,0 +1,17 @@
+{
+  "name": "jhonlaurens-portfolio-version-2026",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Version 2026 multipagina del portfolio profesional de Jhon Laurens.",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "check": "npm run build"
+  },
+  "dependencies": {
+    "pg": "^8.13.1",
+    "vite": "^8.0.16"
+  }
+}

@@ -7,10 +7,16 @@ const indexPath = path.join(publicDir, "index.html");
 
 const requiredFiles = [
   indexPath,
-  path.join(publicDir, "assets", "img", "profile", "profile-new.jpg"),
-  path.join(publicDir, "assets", "doc", "CV Jhon Laurens.pdf"),
-  path.join(publicDir, "assets", "js", "main.js"),
-  path.join(publicDir, "assets", "js", "contact-simple.js"),
+  path.join(publicDir, "sobre-mi", "index.html"),
+  path.join(publicDir, "experiencia", "index.html"),
+  path.join(publicDir, "proyectos", "index.html"),
+  path.join(publicDir, "stack", "index.html"),
+  path.join(publicDir, "contacto", "index.html"),
+  path.join(publicDir, "assets", "professional-portrait.jpg"),
+  path.join(publicDir, "assets", "favicon.png"),
+  path.join(publicDir, "assets", "doc", "cv", "cv.pdf"),
+  path.join(publicDir, "robots.txt"),
+  path.join(publicDir, "sitemap.xml"),
 ];
 
 const missing = requiredFiles.filter((file) => !fs.existsSync(file));
@@ -22,6 +28,10 @@ if (!fs.existsSync(indexPath)) {
 
 const html = fs.readFileSync(indexPath, "utf8");
 const brokenReferences = [
+  "jhonlaurens.vercel.app",
+  "/servicios/",
+  "/documentacion/",
+  "Data Engineering + IA aplicada",
   "assets/img/profile-img.jpg",
   "assets/documents/CV_Jhon_Laurens_2024.pdf",
   "contact@example.com",
