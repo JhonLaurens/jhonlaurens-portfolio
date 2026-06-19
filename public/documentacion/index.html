@@ -3,35 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentación, gobierno e IA responsable | Jhon Laurens</title>
-  <meta name="description" content="Enfoque de documentación para proyectos de datos e IA: trazabilidad, ADR, seguridad, evidencia de pruebas, despliegue y uso responsable de IA." />
+  <title>Documentación, Gobierno Técnico y Calidad | Jhon Laurens</title>
+  <meta name="description" content="Enfoque de documentación para proyectos de datos y backend: trazabilidad, ADR, seguridad, evidencia de pruebas y gobierno técnico." />
   <link rel="canonical" href="https://jhonlaurens.vercel.app/documentacion/" />
-  <meta property="og:title" content="Documentación, gobierno e IA responsable | Jhon Laurens" />
+  <meta property="og:title" content="Documentación, Gobierno Técnico y Calidad | Jhon Laurens" />
   <meta property="og:description" content="Documentación viva para que las decisiones técnicas puedan revisarse, operarse y mantenerse." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jhonlaurens.vercel.app/documentacion/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Documentación, gobierno e IA responsable | Jhon Laurens" />
+  <meta name="twitter:title" content="Documentación, Gobierno Técnico y Calidad | Jhon Laurens" />
   <meta name="twitter:description" content="Documentación viva para que las decisiones técnicas puedan revisarse, operarse y mantenerse." />
   <meta name="twitter:image" content="https://jhonlaurens.vercel.app/assets/professional-portrait.jpg" />
   <link rel="icon" href="/assets/favicon.png" />
-  <link rel="apple-touch-icon" href="/assets/favicon.png" />
-  <link rel="manifest" href="/manifest.webmanifest" />
-  <script type="module" crossorigin src="/assets/main-7zRs9PEC.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-C_de3vfU.css">
+  <link rel="apple-touch-icon" href="/assets/brand/logo-mark-192.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <script type="module" crossorigin src="/assets/main-dfkgT1Ng.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-CGBNTaKS.css">
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
     <div class="nav-wrap">
-      <a class="brand" href="/">Jhon Laurens<span>Data Engineering + IA aplicada</span></a>
-      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-links">Menu</button>
-      <nav class="nav-links" id="nav-links" data-nav-links aria-label="Navegacion principal">
+      <a class="brand" href="/" aria-label="Jhon Laurens - Ingeniería de Datos, Backend y Automatización Bancaria">
+        <img class="brand-logo protected-image" src="/assets/brand/logo-mark-192.png" alt="" width="44" height="44" loading="eager" draggable="false" />
+        <span class="brand-copy">
+          <strong>Jhon Laurens</strong>
+          <span>Ingeniería de Datos · Backend · Automatización</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú">
+        <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <nav class="nav-links" id="nav-links" data-nav-links aria-label="Navegación principal">
         <a href="/">Inicio</a>
-        <a href="/servicios/">Servicios</a>
+        <a href="/sobre-mi/">Sobre mí</a>
+        <a href="/experiencia/">Experiencia</a>
         <a href="/proyectos/">Proyectos</a>
-        <a href="/documentacion/">Documentación</a>
-        <a href="/sobre-mi/">Sobre mi</a>
+        <a href="/stack/">Stack</a>
         <a href="/contacto/">Contacto</a>
       </nav>
     </div>
@@ -42,7 +50,7 @@
       <div class="container">
         <p class="eyebrow">Documentación y gobierno</p>
         <h1>Documentar no es burocracia: es memoria operativa.</h1>
-        <p class="lead">En datos e IA, una buena decisión también necesita contexto, responsable, riesgo, prueba y forma de mantenimiento.</p>
+        <p class="lead">En backend y datos, una buena decisión técnica también necesita contexto, responsable, mitigación de riesgos, pruebas y una estrategia de mantenimiento.</p>
       </div>
     </section>
 
@@ -52,7 +60,7 @@
           <h2>Artefactos que vuelven revisable un proyecto.</h2>
           <ul class="feature-list">
             <li><span class="check">✓</span><span>ADR para decisiones técnicas importantes y sus alternativas descartadas.</span></li>
-            <li><span class="check">✓</span><span>Bitácora de uso de IA con objetivo, herramienta, entrada, salida y validación humana.</span></li>
+            <li><span class="check">✓</span><span>Bitácora de infraestructura con esquemas de base de datos, flujos n8n y scripts.</span></li>
             <li><span class="check">✓</span><span>Registro de riesgos, controles, evidencias de prueba y criterios de aceptación.</span></li>
             <li><span class="check">✓</span><span>Guía de despliegue con variables requeridas, rollback y responsables.</span></li>
           </ul>
@@ -67,20 +75,20 @@
 
     <section class="section band">
       <div class="container">
-        <p class="eyebrow">Uso responsable de IA</p>
-        <h2>La IA se documenta como cualquier otra decisión técnica.</h2>
+        <p class="eyebrow">Gobierno de Datos y Backend</p>
+        <h2>La infraestructura se documenta para garantizar la auditoría técnica.</h2>
         <div class="card-grid">
           <article class="card">
             <h3>Propósito</h3>
-            <p>Qué problema resuelve, qué no debe resolver y qué persona valida el resultado.</p>
+            <p>Qué problema de negocio resuelve, el alcance técnico y las limitaciones de la arquitectura.</p>
           </article>
           <article class="card">
-            <h3>Datos y límites</h3>
-            <p>Qué fuentes participan, qué información no se debe exponer y cómo se evita depender de una salida sin revisar.</p>
+            <h3>Datos y seguridad</h3>
+            <p>Qué bases de datos participan, cómo se enmascaran datos sensibles y la trazabilidad del flujo.</p>
           </article>
           <article class="card">
             <h3>Evidencia</h3>
-            <p>Prompts, criterios de prueba, errores conocidos y cambios realizados después de la revisión humana.</p>
+            <p>Esquemas SQL, pipelines n8n documentados, logs de prueba y criterios de aceptación de negocio.</p>
           </article>
         </div>
       </div>
@@ -91,17 +99,19 @@
     <div class="container grid-2">
       <div>
         <strong>Jhon Laurens</strong>
-        <p>Portfolio 2026 para datos, IA aplicada, automatización y documentación técnica.</p>
+        <p>Portafolio 2026: Ingeniería de datos, backend, automatización y gobierno técnico para el sector financiero.</p>
       </div>
       <nav class="footer-links" aria-label="Navegación secundaria">
-        <a href="/servicios/">Servicios</a>
+        <a href="/sobre-mi/">Sobre mí</a>
+        <a href="/experiencia/">Experiencia</a>
         <a href="/proyectos/">Proyectos</a>
+        <a href="/stack/">Stack</a>
         <a href="/contacto/">Contacto</a>
         <a href="mailto:jhonlaurens@gmail.com">Email</a>
         <a href="https://github.com/jhonlaurens" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/jhon-laurens/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </nav>
-      <p>© 2026 Jhon Laurens. Construido con Vite multipágina, HTML semántico, accesibilidad y despliegue compatible con Vercel.</p>
+      <p>© 2026 Jhon Laurens. Portafolio enfocado en ingeniería de datos, backend y automatización bancaria.</p>
     </div>
   </footer>
 </body>
