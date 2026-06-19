@@ -6,37 +6,39 @@
   <title>Proyectos de Ingeniería de Datos y Backend | Jhon Laurens</title>
   <meta name="description" content="Casos reales de Jhon Laurens en desarrollo backend (Spring Boot), flujos en n8n, soporte de core bancario COBIS e ingeniería de datos." />
   <link rel="canonical" href="https://jhonlaurens.vercel.app/proyectos/" />
+  <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Proyectos de Ingeniería de Datos y Backend | Jhon Laurens" />
   <meta property="og:description" content="Soluciones reales implementadas y ordenadas por impacto técnico en la integridad de datos y backend bancario." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jhonlaurens.vercel.app/proyectos/" />
-  <meta property="og:image" content="https://jhonlaurens.vercel.app/assets/professional-portrait.jpg" />
+  <meta property="og:image" content="https://jhonlaurens.vercel.app/assets/portfolio/og-backend-banking.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Proyectos de Ingeniería de Datos y Backend | Jhon Laurens" />
   <meta name="twitter:description" content="Soluciones reales implementadas y ordenadas por impacto técnico en la integridad de datos y backend bancario." />
-  <meta name="twitter:image" content="https://jhonlaurens.vercel.app/assets/professional-portrait.jpg" />
+  <meta name="twitter:image" content="https://jhonlaurens.vercel.app/assets/portfolio/og-backend-banking.jpg" />
   <link rel="icon" href="/assets/favicon.png" />
   <link rel="apple-touch-icon" href="/assets/brand/logo-mark-192.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "Proyectos de Ingeniería de Datos y Backend",
-      "url": "https://jhonlaurens.vercel.app/proyectos/",
-      "about": ["Ingeniería de Datos", "Backend Developer", "Automatización", "Core Bancario COBIS"],
-      "author": { "@type": "Person", "name": "Jhon Laurens" }
-    }
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Proyectos de Ingeniería de Datos y Backend",
+    "url": "https://jhonlaurens.vercel.app/proyectos/",
+    "about": ["Ingeniería de Datos", "Backend Developer", "Automatización", "Core Bancario COBIS"],
+    "author": { "@type": "Person", "name": "Jhon Laurens" }
+  }
   </script>
   <script type="module" crossorigin src="/assets/main-dfkgT1Ng.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/main-CGBNTaKS.css">
+  <link rel="stylesheet" href="/assets/premium.css">
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
     <div class="nav-wrap">
       <a class="brand" href="/" aria-label="Jhon Laurens - Ingeniería de Datos, Backend y Automatización Bancaria">
-        <img class="brand-logo protected-image" src="/assets/brand/logo-mark-192.png" alt="" width="44" height="44" loading="eager" draggable="false" />
+        <img class="brand-logo protected-image" src="/assets/brand/logo-mark-192.png" alt="Jhon Laurens — Ingeniería de Datos, Backend y Automatización" width="44" height="44" loading="eager" draggable="false" />
         <span class="brand-copy">
           <strong>Jhon Laurens</strong>
           <span>Ingeniería de Datos · Backend · Automatización</span>
@@ -49,7 +51,7 @@
         <a href="/">Inicio</a>
         <a href="/sobre-mi/">Sobre mí</a>
         <a href="/experiencia/">Experiencia</a>
-        <a href="/proyectos/">Proyectos</a>
+        <a href="/proyectos/" aria-current="page">Proyectos</a>
         <a href="/stack/">Stack</a>
         <a href="/contacto/">Contacto</a>
       </nav>
@@ -67,14 +69,16 @@
 
     <section class="section">
       <div class="container project-grid">
+
         <article class="case-card">
+          <span class="case-number" aria-hidden="true">01</span>
           <p class="kicker">Ingeniería Backend</p>
           <h2>Gestión Centralizada de Tarifas Bancarias</h2>
           <dl>
             <div><dt>Contexto</dt><dd>Entorno bancario altamente regulado que requería centralizar y asegurar la gestión de tarifas de productos financieros.</dd></div>
-            <div><dt>Reto</dt><dd>Desarrollar una estructura backend acoplada bajo estándares de arquitectura limpia que permitiera auditorías automáticas de cambios.</dd></div>
+            <div><dt>Reto</dt><dd>Desarrollar una estructura backend desacoplada bajo estándares de arquitectura limpia que permitiera auditorías automáticas de cambios.</dd></div>
             <div><dt>Solución</dt><dd>Construcción del backend con Java Spring Boot (arquitectura hexagonal), interfaz en React y base de datos PostgreSQL.</dd></div>
-            <div><dt>Resultado</dt><dd>Cero errores en auditoría de tarifas y reducción del 90% en tiempos de aprobación.</dd></div>
+            <div class="result-row"><dt>Resultado</dt><dd>Cero errores en auditoría de tarifas y reducción del 90% en tiempos de aprobación.</dd></div>
           </dl>
           <ul class="tag-list" aria-label="Tecnologías del caso">
             <li>Spring Boot</li><li>React</li><li>PostgreSQL</li><li>Arquitectura Hexagonal</li>
@@ -82,13 +86,14 @@
         </article>
 
         <article class="case-card">
+          <span class="case-number" aria-hidden="true">02</span>
           <p class="kicker">Automatización y Orquestación</p>
           <h2>Sistema de Automatización e Integración de Carga Masiva</h2>
           <dl>
             <div><dt>Contexto</dt><dd>Intercambio constante de grandes volúmenes de datos financieros con entes externos y repositorios en la nube.</dd></div>
             <div><dt>Reto</dt><dd>Eliminar la descarga y validación manual de archivos S3/SFTP garantizando la integridad de los datos en base de datos.</dd></div>
             <div><dt>Solución</dt><dd>Implementación de pipelines de orquestación con n8n, procesamiento de archivos con Python y almacenamiento seguro.</dd></div>
-            <div><dt>Resultado</dt><dd>Automatización completa de 15+ reportes recurrentes y erradicación de errores por intervención manual.</dd></div>
+            <div class="result-row"><dt>Resultado</dt><dd>Automatización completa de 15+ reportes recurrentes y erradicación de errores por intervención manual.</dd></div>
           </dl>
           <ul class="tag-list" aria-label="Tecnologías del caso">
             <li>n8n</li><li>Python</li><li>S3</li><li>SFTP</li><li>PostgreSQL</li>
@@ -96,13 +101,14 @@
         </article>
 
         <article class="case-card">
+          <span class="case-number" aria-hidden="true">03</span>
           <p class="kicker">Automatización Financiera</p>
           <h2>Servicio de Notificación Automatizada para Vencimientos</h2>
           <dl>
             <div><dt>Contexto</dt><dd>Monitoreo diario de vencimientos y condiciones contractuales de portafolios financieros.</dd></div>
             <div><dt>Reto</dt><dd>Reducir la tasa de mora y optimizar la comunicación de alertas automáticas sin exponer datos de clientes.</dd></div>
             <div><dt>Solución</dt><dd>Programación de consultas SQL de detección en PostgreSQL, integración con n8n para generación de alertas dinámicas y plantillas HTML.</dd></div>
-            <div><dt>Resultado</dt><dd>Disminución del 12% en morosidad temprana y trazabilidad total del canal de notificaciones.</dd></div>
+            <div class="result-row"><dt>Resultado</dt><dd>Disminución del 12% en morosidad temprana y trazabilidad total del canal de notificaciones.</dd></div>
           </dl>
           <ul class="tag-list" aria-label="Tecnologías del caso">
             <li>SQL</li><li>n8n</li><li>PostgreSQL</li><li>Alertas Automáticas</li>
@@ -110,18 +116,35 @@
         </article>
 
         <article class="case-card">
+          <span class="case-number" aria-hidden="true">04</span>
           <p class="kicker">Infraestructura y Soporte Bancario</p>
           <h2>Soporte y Análisis de Datos sobre Core Bancario COBIS</h2>
           <dl>
             <div><dt>Contexto</dt><dd>Entorno transaccional bancario (COBIS) que requería soporte técnico constante, corrección de inconsistencias y validación.</dd></div>
             <div><dt>Reto</dt><dd>Identificar y resolver rápidamente problemas de consistencia en el flujo de caja diario y tablas del core bancario.</dd></div>
             <div><dt>Solución</dt><dd>Escritura de scripts SQL avanzados para depuración, conciliaciones automáticas y monitoreo de colas de mensajería.</dd></div>
-            <div><dt>Resultado</dt><dd>Resolución oportuna de incidentes en bases de datos productivas (SLA > 98%) y mitigación del riesgo financiero.</dd></div>
+            <div class="result-row"><dt>Resultado</dt><dd>Resolución oportuna de incidentes en bases de datos productivas (SLA > 98%) y mitigación del riesgo financiero.</dd></div>
           </dl>
           <ul class="tag-list" aria-label="Tecnologías del caso">
             <li>Core COBIS</li><li>SQL</li><li>Oracle</li><li>Soporte de Aplicaciones</li>
           </ul>
         </article>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-terminal">
+          <div class="cta-terminal-text">
+            <h2>¿Tu equipo tiene un reto similar?</h2>
+            <p>Cuéntame el problema. Estructuro un plan de ingeniería viable y respondo con perspectiva técnica.</p>
+          </div>
+          <div class="cta-terminal-actions">
+            <a class="button light" href="/contacto/">Iniciar conversación</a>
+            <a class="button ghost" href="/stack/">Ver mi stack</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>

@@ -6,27 +6,45 @@
   <title>Contacto para proyectos de datos y backend | Jhon Laurens</title>
   <meta name="description" content="Contacta a Jhon Laurens para conversar sobre ingeniería de datos, backend con Spring Boot, automatizaciones en n8n o soporte a core bancario." />
   <link rel="canonical" href="https://jhonlaurens.vercel.app/contacto/" />
+  <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Contacto para proyectos de datos y backend | Jhon Laurens" />
   <meta property="og:description" content="Formulario directo para iniciar una conversación sobre backend, flujos de automatización e ingeniería de datos." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jhonlaurens.vercel.app/contacto/" />
+  <meta property="og:image" content="https://jhonlaurens.vercel.app/assets/portfolio/og-backend-banking.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Contacto para proyectos de datos y backend | Jhon Laurens" />
   <meta name="twitter:description" content="Formulario directo para iniciar una conversación sobre backend, flujos de automatización e ingeniería de datos." />
-  <meta name="twitter:image" content="https://jhonlaurens.vercel.app/assets/professional-portrait.jpg" />
+  <meta name="twitter:image" content="https://jhonlaurens.vercel.app/assets/portfolio/og-backend-banking.jpg" />
   <link rel="icon" href="/assets/favicon.png" />
   <link rel="apple-touch-icon" href="/assets/brand/logo-mark-192.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contacto — Jhon Laurens",
+    "url": "https://jhonlaurens.vercel.app/contacto/",
+    "description": "Formulario de contacto para ingeniería de datos, backend y automatización bancaria.",
+    "author": {
+      "@type": "Person",
+      "name": "Jhon Laurens",
+      "email": "mailto:jhonlaurens@gmail.com",
+      "url": "https://jhonlaurens.vercel.app/"
+    }
+  }
+  </script>
   <script type="module" crossorigin src="/assets/main-dfkgT1Ng.js"></script>
   <script type="module" crossorigin src="/assets/contact-eSFHqxWp.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/main-CGBNTaKS.css">
+  <link rel="stylesheet" href="/assets/premium.css">
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
     <div class="nav-wrap">
       <a class="brand" href="/" aria-label="Jhon Laurens - Ingeniería de Datos, Backend y Automatización Bancaria">
-        <img class="brand-logo protected-image" src="/assets/brand/logo-mark-192.png" alt="" width="44" height="44" loading="eager" draggable="false" />
+        <img class="brand-logo protected-image" src="/assets/brand/logo-mark-192.png" alt="Jhon Laurens — Ingeniería de Datos, Backend y Automatización" width="44" height="44" loading="eager" draggable="false" />
         <span class="brand-copy">
           <strong>Jhon Laurens</strong>
           <span>Ingeniería de Datos · Backend · Automatización</span>
@@ -41,7 +59,7 @@
         <a href="/experiencia/">Experiencia</a>
         <a href="/proyectos/">Proyectos</a>
         <a href="/stack/">Stack</a>
-        <a href="/contacto/">Contacto</a>
+        <a href="/contacto/" aria-current="page">Contacto</a>
       </nav>
     </div>
   </header>
@@ -72,16 +90,16 @@
         </div>
         <div class="contact-panel">
           <h2>Enviar mensaje</h2>
-          <p>Este portafolio es un entorno real: el formulario se procesa mediante una API serverless conectada a PostgreSQL en Supabase.</p>
-          <form class="form" data-contact-form>
+          <p>El formulario se procesa mediante una API serverless conectada a PostgreSQL en Supabase.</p>
+          <form class="form" data-contact-form novalidate>
             <input type="hidden" name="source" value="contact-page" />
             <div class="field">
               <label for="name">Nombre</label>
-              <input id="name" name="name" autocomplete="name" required minlength="2" maxlength="100" />
+              <input id="name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="100" placeholder="Tu nombre completo" />
             </div>
             <div class="field">
               <label for="email">Correo</label>
-              <input id="email" name="email" type="email" autocomplete="email" required />
+              <input id="email" name="email" type="email" autocomplete="email" required placeholder="tu@empresa.com" />
             </div>
             <div class="field">
               <label for="subject">Tema</label>
@@ -97,7 +115,7 @@
               <textarea id="message" name="message" required minlength="10" maxlength="2000" placeholder="Ejemplo: necesitamos construir un componente API con Spring Boot o integrar un flujo de carga masiva SFTP a PostgreSQL con n8n."></textarea>
             </div>
             <button class="button secondary" type="submit">Enviar mensaje</button>
-            <p class="form-status" data-form-status role="status"></p>
+            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>
